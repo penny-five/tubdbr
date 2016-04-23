@@ -1,12 +1,18 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
+    <slider :min="5" :max="10"></slider>
+    <slider :min="1" :max="5"></slider>
   </div>
 </template>
 
 <script>
+import Slider from 'components/slider';
 
 export default {
+  components: {
+    Slider
+  },
   data: () => ({
     msg: 'Hello world'
   })
@@ -15,7 +21,5 @@ export default {
 </script>
 
 <style lang="scss">
-h1 {
-  color: red;
-}
+@import "./styles/base";
 </style>

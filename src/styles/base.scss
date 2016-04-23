@@ -1,0 +1,13 @@
+@import "~bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap-slider/dist/css/bootstrap-slider";
+
+@import "./colors";
+
+body {
+  background-color: $color-background;
+}
+
+h1 {
+  color: red;
+}

@@ -10,7 +10,8 @@ module.exports = {
     filename: 'bundle.[hash].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue']
+    extensions: ['', '.js', '.vue'],
+    root: path.resolve(__dirname, '..', 'src'),
   },
   module: {
     loaders: [

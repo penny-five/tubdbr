@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/penny-five/tbdbr#readme",
   "dependencies": {
+    "bootstrap-sass": "3.3.6",
+    "bootstrap-slider": "7.0.0",
+    "jquery": "^2.2.3",
     "lodash": "4.11.1",
     "vue": "1.0.21",
     "vuex": "0.6.2"
