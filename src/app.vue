@@ -16,12 +16,14 @@
 </template>
 
 <script>
+import store from './store';
 import InputSlider from 'components/input-slider';
 
 export default {
   components: {
     InputSlider
-  }
+  },
+  store
 }
 
 </script>
