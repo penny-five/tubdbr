@@ -7,27 +7,44 @@ import $ from 'jquery';
 import BootstrapSlider from 'bootstrap-slider';
 
 export default {
-  props: ['min', 'max'],
+  props: ['min', 'max', 'value'],
   ready: function() {
     $(this.$el).slider({
       min: this.min,
-      max: this.max
-    });
+      max: this.max,
+      value: this.value
+    }).on('change', this.onSliderValueChange);
+  },
+  methods: {
+    onSliderValueChange: function(event) {
+      this.$dispatch('slider-change', event.value.newValue);
+    }
+  },
+  watch: {
+    min: function(min) {
+      $(this.$el).slider('setAttribute', 'min', min)
+    },
+    max: function(max) {
+      $(this.$el).slider('setAttribute', 'max', max);
+    },
+    value: function(value) {
+      $(this.$el).slider('setValue', parseInt(value));
+    }
   }
 }
 </script>
 
 <style lang="scss">
-@import "../styles/colors";
+@import "../styles/variables";
 
 $slider-handle-radius: 13px;
 $slider-track-height: 3px;
 $slider-border-size: 1px;
 
 .slider {
-  margin-top: 20px;
 
   &.slider-horizontal {
+    margin-top: 10px;
     width: 100%;
 
     .slider-handle {
@@ -51,8 +68,10 @@ $slider-border-size: 1px;
     }
     > .tooltip {
       bottom: 38px;
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 600;
+      font-family: $font-family-sans-serif;
+      font-weight: 700;
+
+      transition: opacity 0.2s ease-in-out;
 
       > .tooltip-inner {
         background-color: $color-primary;
