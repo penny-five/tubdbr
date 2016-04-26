@@ -4,21 +4,34 @@
 
 <script>
 import $ from 'jquery';
+import _ from 'lodash';
+
 import BootstrapSlider from 'bootstrap-slider';
 
 export default {
-  props: ['min', 'max', 'value'],
+  props: {
+    min: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      default: 100
+    },
+    value: {
+      type: Number,
+      twoWay: true,
+      default: 0
+    }
+  },
   ready: function() {
     $(this.$el).slider({
       min: this.min,
       max: this.max,
       value: this.value
-    }).on('change', this.onSliderValueChange);
-  },
-  methods: {
-    onSliderValueChange: function(event) {
-      this.$dispatch('slider-change', event.value.newValue);
-    }
+    }).on('change', event => {
+      this.value = event.value.newValue;
+    });
   },
   watch: {
     min: function(min) {
@@ -28,7 +41,7 @@ export default {
       $(this.$el).slider('setAttribute', 'max', max);
     },
     value: function(value) {
-      $(this.$el).slider('setValue', parseInt(value));
+      $(this.$el).slider('setValue', value);
     }
   }
 }

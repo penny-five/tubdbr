@@ -16,20 +16,33 @@ body {
 }
 
 h1 {
-  font-weight: 900;
   font-size: 5.5rem;
+  font-weight: 900;
   text-align: center;
 
   color: $color-primary;
 }
 
+h2 {
+  margin: 4rem 0 2rem;
+
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+
+  color: $color-text;
+}
+
 label {
   color: $color-text;
+  margin: 2rem 0 1rem 0;
 }
 
 .btn {
   padding: 12px 42px;
-  margin: 50px;
+
+  margin-top: 70px;
+  margin-bottom: 70px;
 
   font-size: 1.6rem;
   font-weight: 700;
@@ -53,6 +66,7 @@ label {
 
   &:hover, &:focus, &:active:focus {
     color: white;
+    box-shadow: none;
     outline: none;
   }
 }
@@ -62,6 +76,10 @@ label {
   border-radius: 0;
   border: 1px solid $color-highlight-dark;
   background-color: $color-alt-background;
+
+  &::placeholder {
+    color: $color-text-light;
+  }
 
   &:focus {
     border: 1px solid $color-primary;
