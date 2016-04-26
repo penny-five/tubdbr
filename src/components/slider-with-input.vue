@@ -33,7 +33,7 @@ export default {
       this.$emit('change', value);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

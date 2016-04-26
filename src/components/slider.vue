@@ -4,9 +4,7 @@
 
 <script>
 import $ from 'jquery';
-import _ from 'lodash';
-
-import BootstrapSlider from 'bootstrap-slider';
+import 'bootstrap-slider';
 
 export default {
   props: {
@@ -35,7 +33,7 @@ export default {
   },
   watch: {
     min: function(min) {
-      $(this.$el).slider('setAttribute', 'min', min)
+      $(this.$el).slider('setAttribute', 'min', min);
     },
     max: function(max) {
       $(this.$el).slider('setAttribute', 'max', max);
@@ -44,7 +42,7 @@ export default {
       $(this.$el).slider('setValue', value);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

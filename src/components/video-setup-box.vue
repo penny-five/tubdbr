@@ -27,5 +27,5 @@ export default {
       this.$emit('volume', volume);
     }
   }
-}
+};
 </script>

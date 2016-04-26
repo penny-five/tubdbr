@@ -5,6 +5,9 @@
         "html"
     ],
     "rules": {
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": ["error", "never"],
+      "func-names": "off",
+      "object-shorthand": ["warn", "properties"],
+      "space-before-function-paren": ["error", "never"]
     }
 }
