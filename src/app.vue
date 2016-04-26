@@ -33,7 +33,6 @@
 
 <script>
 import store from './store/store';
-import * as actions from './store/actions';
 import VideoSetupBox from 'components/video-setup-box';
 
 export default {
@@ -63,7 +62,7 @@ export default {
       this.$store.dispatch('SET_AUDIO_DELAY', delay);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
