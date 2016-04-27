@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const merge = require('webpack-merge');
 
 const baseConfig = require('./webpack/webpack.config.base');

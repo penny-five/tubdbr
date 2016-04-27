@@ -1,7 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -11,7 +10,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
-    root: path.resolve(__dirname, '..', 'src'),
+    root: path.resolve(__dirname, '..', 'src')
   },
   module: {
     loaders: [
