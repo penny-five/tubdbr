@@ -6,19 +6,23 @@
         <div class="col-md-6">
           <h2>Video</h2>
           <video-setup-box
-            :volume="videoVolume"
-            :delay="videoDelay"
-            @volume="updateVideoVolume"
-            @delay="updateVideoDelay">
+            :source="video.source"
+            :volume="video.volume"
+            :delay="video.delay"
+            @source="setVideoSource"
+            @volume="setVideoVolume"
+            @delay="setVideoDelay">
           </video-setup-box>
         </div>
         <div class="col-md-6">
           <h2>Audio</h2>
           <video-setup-box
-            :volume="audioVolume"
-            :delay="audioDelay"
-            @volume="updateAudioVolume"
-            @delay="updateAudioDelay">
+            :source="audio.source"
+            :volume="audio.volume"
+            :delay="audio.delay"
+            @source="setAudioSource"
+            @volume="setAudioVolume"
+            @delay="setAudioDelay">
           </video-setup-box>
         </div>
       </div>
@@ -33,6 +37,7 @@
 
 <script>
 import store from './store/store';
+import * as actions from './store/actions';
 import VideoSetupBox from 'components/video-setup-box';
 
 export default {
@@ -41,25 +46,10 @@ export default {
   },
   store,
   vuex: {
+    actions,
     getters: {
-      audioDelay: state => state.audioDelay,
-      audioVolume: state => state.audioVolume,
-      videoDelay: state => state.videoDelay,
-      videoVolume: state => state.videoVolume
-    }
-  },
-  methods: {
-    updateVideoVolume(volume) {
-      this.$store.dispatch('SET_VIDEO_VOLUME', volume);
-    },
-    updateVideoDelay(delay) {
-      this.$store.dispatch('SET_VIDEO_DELAY', delay);
-    },
-    updateAudioVolume(volume) {
-      this.$store.dispatch('SET_AUDIO_VOLUME', volume);
-    },
-    updateAudioDelay(delay) {
-      this.$store.dispatch('SET_AUDIO_DELAY', delay);
+      audio: state => state.audio,
+      video: state => state.video
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <video-url-combofield></video-url-combofield>
+  <video-url-combofield :source.sync="source"></video-url-combofield>
   <label>viive</label>
   <slider-with-input :min="0" :max="100" :value.sync="delay"></slider-with-input>
   <label>volyymi</label>
@@ -12,6 +12,7 @@ import SliderWithInput from 'components/slider-with-input';
 
 export default {
   props: {
+    source: String,
     delay: Number,
     volume: Number
   },
@@ -20,6 +21,9 @@ export default {
     SliderWithInput
   },
   watch: {
+    source: function(source) {
+      this.$emit('source', source)
+    },
     delay: function(delay) {
       this.$emit('delay', delay);
     },
