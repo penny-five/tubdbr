@@ -22,7 +22,7 @@ export default {
   },
   watch: {
     source: function(source) {
-      this.$emit('source', source)
+      this.$emit('source', source);
     },
     delay: function(delay) {
       this.$emit('delay', delay);

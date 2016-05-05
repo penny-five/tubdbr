@@ -5,12 +5,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, '..', 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.[hash].js'
   },
   resolve: {
     extensions: ['', '.js', '.vue'],
-    root: path.resolve(__dirname, '..', 'src')
+    root: path.resolve(__dirname, '../src'),
+    alias: {
+      components: path.resolve(__dirname, '../src/components'),
+      store: path.resolve(__dirname, '../src/store')
+    }
   },
   module: {
     loaders: [

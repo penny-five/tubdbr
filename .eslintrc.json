@@ -1,12 +1,18 @@
 {
-    "extends": "airbnb",
+    "extends": [
+      "airbnb"
+    ],
     "plugins": [
         "react",
         "html"
     ],
+    "settings": {
+      "import/resolver": "webpack"
+    },
     "rules": {
       "comma-dangle": ["error", "never"],
       "func-names": "off",
+      "no-new": ["warn"],
       "object-shorthand": ["warn", "properties"],
       "space-before-function-paren": ["error", "never"]
     }
