@@ -20,6 +20,20 @@ const uglifyPluginOpts = {
 
 module.exports = {
   devtool: false,
+  module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
+    ]
+  },
+  vue: {
+    loaders: {
+      js: 'babel!eslint?{rules:{\'eol-last\':0}}'
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(cleanPluginPaths, cleanPluginOpts),
     new webpack.DefinePlugin(definePluginOpts),
