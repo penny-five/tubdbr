@@ -1,5 +1,5 @@
 <template>
-  <div class="input-slider">
+  <div class="slider-widget">
     <number-input :min="min" :max="max" :value.sync="value"></number-input>
     <slider :min="min" :max="max" :value.sync="value"></slider>
   </div>
@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 $input-width: 50px;
 
-.input-slider {
+.slider-widget {
   position: relative;
   padding-right: $input-width + 16px;
 

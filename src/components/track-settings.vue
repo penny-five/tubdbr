@@ -1,14 +1,14 @@
 <template>
-  <video-url-combofield :source.sync="source"></video-url-combofield>
+  <track-url-editor :source.sync="source"></track-url-editor>
   <label>viive</label>
-  <slider-with-input :min="0" :max="100" :value.sync="delay"></slider-with-input>
+  <slider-widget :min="0" :max="100" :value.sync="delay"></slider-widget>
   <label>volyymi</label>
-  <slider-with-input :min="0" :max="100" :value.sync="volume"></slider-with-input>
+  <slider-widget :min="0" :max="100" :value.sync="volume"></slider-widget>
 </template>
 
 <script>
-import VideoUrlCombofield from 'components/video-url-combofield';
-import SliderWithInput from 'components/slider-with-input';
+import TrackUrlEditor from 'components/track-url-editor';
+import SliderWidget from 'components/slider-widget';
 
 export default {
   props: {
@@ -17,8 +17,8 @@ export default {
     volume: Number
   },
   components: {
-    VideoUrlCombofield,
-    SliderWithInput
+    TrackUrlEditor,
+    SliderWidget
   },
   watch: {
     source: function(source) {

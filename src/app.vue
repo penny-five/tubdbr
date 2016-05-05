@@ -5,25 +5,25 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Video</h2>
-          <video-setup-box
+          <track-settings
             :source="video.source"
             :volume="video.volume"
             :delay="video.delay"
             @source="setVideoSource"
             @volume="setVideoVolume"
             @delay="setVideoDelay">
-          </video-setup-box>
+          </track-settings>
         </div>
         <div class="col-md-6">
           <h2>Audio</h2>
-          <video-setup-box
+          <track-settings
             :source="audio.source"
             :volume="audio.volume"
             :delay="audio.delay"
             @source="setAudioSource"
             @volume="setAudioVolume"
             @delay="setAudioDelay">
-          </video-setup-box>
+          </track-settings>
         </div>
       </div>
       <div class="row">
@@ -38,11 +38,11 @@
 <script>
 import store from './store/store';
 import * as actions from './store/actions';
-import VideoSetupBox from 'components/video-setup-box';
+import TrackSettings from 'components/track-settings';
 
 export default {
   components: {
-    VideoSetupBox
+    TrackSettings
   },
   store,
   vuex: {
