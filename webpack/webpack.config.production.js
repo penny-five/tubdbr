@@ -8,10 +8,6 @@ const cleanPluginOpts = {
   verbose: false
 };
 
-const definePluginOpts = {
-  'process.env': { NODE_ENV: '"production"' }
-};
-
 const uglifyPluginOpts = {
   compress: {
     warnings: false
@@ -36,7 +32,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(cleanPluginPaths, cleanPluginOpts),
-    new webpack.DefinePlugin(definePluginOpts),
     new webpack.optimize.UglifyJsPlugin(uglifyPluginOpts),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin()

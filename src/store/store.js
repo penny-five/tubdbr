@@ -5,13 +5,15 @@ Vue.use(Vuex);
 const initialState = {
   audio: {
     source: null,
-    volume: 0,
-    delay: 0
+    volume: 80,
+    delay: 0,
+    details: null
   },
   video: {
     source: null,
-    volume: 0,
-    delay: 0
+    volume: 50,
+    delay: 0,
+    details: null
   }
 };
 
@@ -19,6 +21,9 @@ const initialState = {
 const mutations = {
   'SET_AUDIO_SOURCE'(state, source) {
     state.audio.source = source;
+  },
+  'SET_AUDIO_DETAILS'(state, details) {
+    state.audio.details = details;
   },
   'SET_AUDIO_DELAY'(state, delay) {
     state.audio.delay = delay;
@@ -28,6 +33,9 @@ const mutations = {
   },
   'SET_VIDEO_SOURCE'(state, source) {
     state.video.source = source;
+  },
+  'SET_VIDEO_DETAILS'(state, details) {
+    state.video.details = details;
   },
   'SET_VIDEO_DELAY'(state, delay) {
     state.video.delay = delay;

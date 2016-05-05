@@ -1,6 +1,15 @@
+import { tryParseVideoId } from './helpers';
+import { fetchVideoDetails } from './api';
 
-export function setAudioSource({ dispatch }, source) {
-  dispatch('SET_AUDIO_SOURCE', source);
+export function setAudioDetails({ dispatch }, details) {
+  dispatch('SET_AUDIO_DETAILS', details);
+}
+
+export function setAudioSource(store, source) {
+  store.dispatch('SET_AUDIO_SOURCE', source);
+  fetchVideoDetails(tryParseVideoId(source)).then(details => {
+    setAudioDetails(store, details);
+  });
 }
 
 export function setAudioVolume({ dispatch }, volume) {
@@ -11,8 +20,15 @@ export function setAudioDelay({ dispatch }, delay) {
   dispatch('SET_AUDIO_DELAY', delay);
 }
 
-export function setVideoSource({ dispatch }, source) {
-  dispatch('SET_VIDEO_SOURCE', source);
+export function setVideoDetails({ dispatch }, details) {
+  dispatch('SET_VIDEO_DETAILS', details);
+}
+
+export function setVideoSource(store, source) {
+  store.dispatch('SET_VIDEO_SOURCE', source);
+  fetchVideoDetails(tryParseVideoId(source)).then(details => {
+    setVideoDetails(store, details);
+  });
 }
 
 export function setVideoVolume({ dispatch }, volume) {

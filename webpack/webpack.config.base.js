@@ -1,6 +1,21 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const htmlPluginOpts = {
+  title: 'tbdbr',
+  template: 'src/index.ejs',
+  hash: false
+};
+
+if (!process.env.YOUTUBE_API_KEY) throw Error('Youtube API key missing');
+const definePluginOpts = {
+  'process.env': {
+    NODE_ENV: `"${process.env.NODE_ENV}"`,
+    YOUTUBE_API_KEY: `"${process.env.YOUTUBE_API_KEY}"`
+  }
+};
 
 module.exports = {
   entry: './src/main.js',
@@ -42,11 +57,8 @@ module.exports = {
     }
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'tbdbr',
-      template: 'src/index.ejs',
-      hash: false
-    }),
+    new webpack.DefinePlugin(definePluginOpts),
+    new HtmlWebpackPlugin(htmlPluginOpts),
     new ExtractTextPlugin('styles.[contenthash].css')
   ]
 };

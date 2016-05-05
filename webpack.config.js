@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const merge = require('webpack-merge');
 
 const baseConfig = require('./webpack/webpack.config.base');

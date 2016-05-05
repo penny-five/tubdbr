@@ -26,7 +26,7 @@
           </track-settings>
         </div>
       </div>
-      <div class="row">
+      <div class="row" v-show="hasVideoAndAudioTrackDetails">
         <div class="col-md-12">
           <button class="btn center-block">dubstep</button>
         </div>
@@ -49,7 +49,8 @@ export default {
     actions,
     getters: {
       audio: state => state.audio,
-      video: state => state.video
+      video: state => state.video,
+      hasVideoAndAudioTrackDetails: state => state.audio.details && state.video.details
     }
   }
 };
