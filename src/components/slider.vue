@@ -77,12 +77,19 @@ $slider-border-size: 1px;
       border-radius: 0;
       box-shadow: none;
     }
+    
     > .tooltip {
       bottom: 38px;
       font-family: $font-family-sans-serif;
       font-weight: 700;
 
-      transition: opacity 0.2s ease-in-out;
+      transform: scale(0.5);
+      transform-origin: bottom;
+      transition: opacity 0.15s ease-in-out, transform 0.15s ease-out;
+
+      &.in {
+        transform: scale(1);
+      }
 
       > .tooltip-inner {
         background-color: $color-primary;
