@@ -31,6 +31,11 @@ const mutations = {
   'SET_AUDIO_VOLUME'(state, volume) {
     state.audio.volume = volume;
   },
+  'CLEAR_AUDIO'(state) {
+    state.audio.source = null;
+    state.audio.details = null;
+    state.audio.delay = 0;
+  },
   'SET_VIDEO_SOURCE'(state, source) {
     state.video.source = source;
   },
@@ -42,6 +47,11 @@ const mutations = {
   },
   'SET_VIDEO_VOLUME'(state, volume) {
     state.video.volume = volume;
+  },
+  'CLEAR_VIDEO'(state) {
+    state.video.source = null;
+    state.video.details = null;
+    state.audio.delay = 0;
   }
 };
 /* eslint-enable no-param-reassign */

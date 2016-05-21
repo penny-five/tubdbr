@@ -1,9 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
 
 @import "./bootstrap-overrides";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "~bootstrap-slider/dist/css/bootstrap-slider";
+@import "~bootstrap-slider/src/sass/bootstrap-slider";
 
 @import "./variables";
 
@@ -31,6 +30,10 @@ h2 {
   text-align: center;
 
   color: $color-text;
+}
+
+a, a:hover, a:focus {
+  color: $color-primary;
 }
 
 label {

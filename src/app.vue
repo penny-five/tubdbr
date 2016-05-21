@@ -9,9 +9,11 @@
             :source="video.source"
             :volume="video.volume"
             :delay="video.delay"
+            :details="video.details"
             @source="setVideoSource"
             @volume="setVideoVolume"
-            @delay="setVideoDelay">
+            @delay="setVideoDelay"
+            @clear="clearVideo">
           </track-settings>
         </div>
         <div class="col-md-6">
@@ -20,9 +22,11 @@
             :source="audio.source"
             :volume="audio.volume"
             :delay="audio.delay"
+            :details="audio.details"
             @source="setAudioSource"
             @volume="setAudioVolume"
-            @delay="setAudioDelay">
+            @delay="setAudioDelay"
+            @clear="clearAudio">
           </track-settings>
         </div>
       </div>

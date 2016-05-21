@@ -20,6 +20,10 @@ export function setAudioDelay({ dispatch }, delay) {
   dispatch('SET_AUDIO_DELAY', delay);
 }
 
+export function clearAudio({ dispatch }) {
+  dispatch('CLEAR_AUDIO');
+}
+
 export function setVideoDetails({ dispatch }, details) {
   dispatch('SET_VIDEO_DETAILS', details);
 }
@@ -37,4 +41,8 @@ export function setVideoVolume({ dispatch }, volume) {
 
 export function setVideoDelay({ dispatch }, delay) {
   dispatch('SET_VIDEO_DELAY', delay);
+}
+
+export function clearVideo({ dispatch }) {
+  dispatch('CLEAR_VIDEO');
 }
