@@ -25,12 +25,12 @@ function parseResponse(res) {
   };
 }
 
-export function fetchVideoDetails(videoId) {
-  if (videoId === null) return Promise.resolve(null);
+export function fetchVideoMetadata(videoID) {
+  if (videoID === null) return Promise.resolve(null);
 
   return new Promise((resolve, reject) => {
     $.get(createRequest(LIST_VIDEOS_RESOURCE, {
-      id: videoId,
+      id: videoID,
       part: ['snippet', 'contentDetails']
     })).done(res => {
       resolve(parseResponse(res));

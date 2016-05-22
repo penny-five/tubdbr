@@ -1,11 +1,11 @@
 <template>
   <div class="track-settings">
-    <div class="track-action">
-      <div v-if="track.details" transition="fade">
-        <track-details
-          :details="track.details"
+    <div class="track-settings__action">
+      <div v-if="track.metadata" transition="fade">
+        <track-metadata
+          :metadata="track.metadata"
           @clear="onClear">
-        </track-details>
+        </track-metadata>
       </div>
       <div v-else transition="fade">
         <track-url-editor
@@ -14,11 +14,11 @@
         </track-url-editor>
       </div>
     </div>
-    <template v-if="track.details">
+    <template v-if="track.metadata">
       <label>viive</label>
       <slider-widget
         :min="0"
-        :max="track.details.duration"
+        :max="track.metadata.duration"
         :value="track.delay"
         format="time"
         @change="onChangeDelay">
@@ -37,7 +37,7 @@
 
 <script>
 import TrackUrlEditor from 'components/track-url-editor';
-import TrackDetails from 'components/track-details';
+import TrackMetadata from 'components/track-metadata';
 import SliderWidget from 'components/slider-widget';
 
 export default {
@@ -46,7 +46,7 @@ export default {
   },
   components: {
     TrackUrlEditor,
-    TrackDetails,
+    TrackMetadata,
     SliderWidget
   },
   methods: {
@@ -73,7 +73,7 @@ export default {
   position: relative;
   padding-top: $settings-row-height;
 
-  > .track-action {
+  > .track-settings__action {
     top: 0;
     left: 0;
     right: 0;

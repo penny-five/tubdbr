@@ -24,7 +24,7 @@
           </track-settings>
         </div>
       </div>
-      <div class="row" v-show="hasVideoAndAudioTrackDetails">
+      <div class="row" v-show="hasVideoAndAudioTrackMetadata">
         <div class="col-md-12">
           <button class="btn center-block">dubstep</button>
         </div>
@@ -48,7 +48,7 @@ export default {
     getters: {
       audioTrack: state => state.audioTrack,
       videoTrack: state => state.videoTrack,
-      hasVideoAndAudioTrackDetails: state => state.audioTrack.details && state.videoTrack.details
+      hasVideoAndAudioTrackMetadata: state => state.audioTrack.metadata && state.videoTrack.metadata
     }
   }
 };

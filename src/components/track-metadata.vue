@@ -1,12 +1,12 @@
 <template>
-  <div class="track-details">
-    <img :src="details.thumbnail" class="track-details__thumbnail"></img>
-    <div class="track-details__title-wrapper">
-      <a :href="createYoutubeLink()" target="_blank" class="track-details__title">
-        {{ details.title }}
+  <div class="track-metadata">
+    <img :src="metadata.thumbnail" class="track-metadata__thumbnail"></img>
+    <div class="track-metadata__title-wrapper">
+      <a :href="createYoutubeLink()" target="_blank" class="track-metadata__title">
+        {{ metadata.title }}
       </a>
     </div>
-    <button class="track-details__clear-btn" @click="onClearClicked">
+    <button class="track-metadata__clear-btn" @click="onClearClicked">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
   </div>
@@ -16,11 +16,11 @@
 
 export default {
   props: {
-    details: Object
+    metadata: Object
   },
   methods: {
     createYoutubeLink() {
-      return `https://www.youtube.com/watch?v=${this.details.id}`;
+      return `https://www.youtube.com/watch?v=${this.metadata.id}`;
     },
     onClearClicked() {
       this.$emit('clear');
@@ -37,12 +37,12 @@ $height: $settings-row-height;
 $thumbnail-width: $height * (16/9);
 $clear-btn-width: $settings-row-control-width;
 
-.track-details {
+.track-metadata {
   display: block;
 
   padding-right: $clear-btn-width + $base-margin;
 
-  .track-details__thumbnail {
+  .track-metadata__thumbnail {
     width: $thumbnail-width;
     height: $height;
 
@@ -50,7 +50,7 @@ $clear-btn-width: $settings-row-control-width;
     border: 1px solid $color-highlight-light;
   }
 
-  .track-details__title-wrapper {
+  .track-metadata__title-wrapper {
     position: absolute;
     top: 0;
     right: $clear-btn-width + $base-margin;
@@ -66,11 +66,11 @@ $clear-btn-width: $settings-row-control-width;
     color: $color-primary;
   }
 
-  .track-details__title {
+  .track-metadata__title {
     line-height: $height;
   }
 
-  .track-details__clear-btn {
+  .track-metadata__clear-btn {
     position: absolute;
     top: 0;
     right: 0;

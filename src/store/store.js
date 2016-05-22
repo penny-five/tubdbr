@@ -7,13 +7,13 @@ const initialState = {
     source: null,
     volume: 50,
     delay: 0,
-    details: null
+    metadata: null
   },
   videoTrack: {
     source: null,
     volume: 80,
     delay: 0,
-    details: null
+    metadata: null
   }
 };
 
@@ -22,8 +22,8 @@ const mutations = {
   'UPDATE_AUDIO_TRACK_SOURCE'({ audioTrack }, source) {
     audioTrack.source = source;
   },
-  'UPDATE_AUDIO_TRACK_DETAILS'({ audioTrack }, details) {
-    audioTrack.details = details;
+  'UPDATE_AUDIO_TRACK_METADATA'({ audioTrack }, metadata) {
+    audioTrack.metadata = metadata;
   },
   'UPDATE_AUDIO_TRACK_DELAY'({ audioTrack }, delay) {
     audioTrack.delay = delay;
@@ -33,14 +33,14 @@ const mutations = {
   },
   'CLEAR_AUDIO_TRACK'({ audioTrack }) {
     audioTrack.source = null;
-    audioTrack.details = null;
+    audioTrack.metadata = null;
     audioTrack.delay = 0;
   },
   'UPDATE_VIDEO_TRACK_SOURCE'({ videoTrack }, source) {
     videoTrack.source = source;
   },
-  'UPDATE_VIDEO_TRACK_DETAILS'({ videoTrack }, details) {
-    videoTrack.details = details;
+  'UPDATE_VIDEO_TRACK_METADATA'({ videoTrack }, metadata) {
+    videoTrack.metadata = metadata;
   },
   'UPDATE_VIDEO_TRACK_DELAY'({ videoTrack }, delay) {
     videoTrack.delay = delay;
@@ -50,7 +50,7 @@ const mutations = {
   },
   'CLEAR_VIDEO_TRACK'({ videoTrack }) {
     videoTrack.source = null;
-    videoTrack.details = null;
+    videoTrack.metadata = null;
     videoTrack.delay = 0;
   }
 };
