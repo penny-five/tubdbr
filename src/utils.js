@@ -1,3 +1,4 @@
+import moment from 'moment';
 import URL from 'url-parse';
 
 const YOUTUBE_HOSTNAME_VARIANTS = [
@@ -17,4 +18,14 @@ function tryParseVideoIdFromPossibleUrl(possibleUrl) {
 export function tryParseVideoId(input) {
   const id = tryParseVideoIdFromPossibleUrl(input) || input;
   return VALID_VIDEO_ID_MATCHER.exec(id) !== null ? id : null;
+}
+
+export function formatDuration(value) {
+  return moment.duration(value, 'seconds').format('m:ss', { trim: false });
+}
+
+export function parseDuration(value) {
+  const minutes = parseInt(value.split(':')[0], 10) || 0;
+  const seconds = parseInt(value.split(':')[1], 10) || 0;
+  return minutes * 60 + seconds;
 }

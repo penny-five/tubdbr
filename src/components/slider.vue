@@ -6,6 +6,8 @@
 import $ from 'jquery';
 import 'bootstrap-slider';
 
+import { formatDuration } from '../utils';
+
 export default {
   props: {
     min: {
@@ -20,13 +22,18 @@ export default {
       type: Number,
       twoWay: true,
       default: 0
+    },
+    format: {
+      type: String,
+      default: 'number'
     }
   },
   ready: function() {
     $(this.$el).slider({
       min: this.min,
       max: this.max,
-      value: this.value
+      value: this.value,
+      formatter: this.format === 'time' ? formatDuration : null
     }).on('change', event => {
       this.value = event.value.newValue;
     });
@@ -77,7 +84,7 @@ $slider-border-size: 1px;
       border-radius: 0;
       box-shadow: none;
     }
-    
+
     > .tooltip {
       bottom: 38px;
       font-family: $font-family-sans-serif;

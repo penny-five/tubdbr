@@ -1,4 +1,4 @@
-import { tryParseVideoId } from './helpers';
+import { tryParseVideoId } from '../utils';
 import { fetchVideoDetails } from './api';
 
 function tryFetchVideoDetails(source, cb) {

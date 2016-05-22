@@ -1,5 +1,5 @@
 <template>
-  <input class="form-control" number v-model="value | clamp min max" @change.stop>
+  <input class="form-control" v-model="value | duration" @change.stop>
 </template>
 
 <script>

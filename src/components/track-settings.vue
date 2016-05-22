@@ -20,13 +20,16 @@
         :min="0"
         :max="track.details.duration"
         :value="track.delay"
+        format="time"
         @change="onChangeDelay">
       </slider-widget>
     </template>
     <label>volyymi</label>
     <slider-widget
-      :min="0" :max="100"
+      :min="0"
+      :max="100"
       :value="track.volume"
+      format="number"
       @change="onChangeVolume">
     </slider-widget>
   </div>
