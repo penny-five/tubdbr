@@ -1,6 +1,6 @@
 <template>
-  <div class="track-settings">
-    <div class="track-settings__action">
+  <div class="track-editor">
+    <div class="track-editor__action">
       <div v-if="track.metadata" transition="fade">
         <track-metadata
           :metadata="track.metadata"
@@ -8,10 +8,10 @@
         </track-metadata>
       </div>
       <div v-else transition="fade">
-        <track-url-editor
+        <track-source-editor
           :source="track.source"
           @change="onChangeSource">
-        </track-url-editor>
+        </track-source-editor>
       </div>
     </div>
     <template v-if="track.metadata">
@@ -20,7 +20,7 @@
         :min="0"
         :max="track.metadata.duration"
         :value="track.delay"
-        format="time"
+        format="duration"
         @change="onChangeDelay">
       </slider-widget>
     </template>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import TrackUrlEditor from 'components/track-url-editor';
+import TrackSourceEditor from 'components/track-source-editor';
 import TrackMetadata from 'components/track-metadata';
 import SliderWidget from 'components/slider-widget';
 
@@ -45,7 +45,7 @@ export default {
     track: Object
   },
   components: {
-    TrackUrlEditor,
+    TrackSourceEditor,
     TrackMetadata,
     SliderWidget
   },
@@ -69,11 +69,11 @@ export default {
 <style lang="scss">
 @import "../styles/variables";
 
-.track-settings {
+.track-editor {
   position: relative;
   padding-top: $settings-row-height;
 
-  > .track-settings__action {
+  > .track-editor__action {
     top: 0;
     left: 0;
     right: 0;

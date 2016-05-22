@@ -5,23 +5,23 @@
       <div class="row">
         <div class="col-md-6">
           <h2>Video</h2>
-          <track-settings
+          <track-editor
             :track="videoTrack"
             @change-source="updateVideoTrackSource"
             @change-volume="updateVideoTrackVolume"
             @change-delay="updateVideoTrackDelay"
             @clear="clearVideoTrack">
-          </track-settings>
+          </track-editor>
         </div>
         <div class="col-md-6">
           <h2>Audio</h2>
-          <track-settings
+          <track-editor
             :track="audioTrack"
             @change-source="updateAudioTrackSource"
             @change-volume="updateAudioTrackVolume"
             @change-delay="updateAudioTrackDelay"
             @clear="clearAudioTrack">
-          </track-settings>
+          </track-editor>
         </div>
       </div>
       <div class="row" v-show="hasVideoAndAudioTrackMetadata">
@@ -36,11 +36,11 @@
 <script>
 import store from './store/store';
 import * as actions from './store/actions';
-import TrackSettings from 'components/track-settings';
+import TrackEditor from 'components/track-editor';
 
 export default {
   components: {
-    TrackSettings
+    TrackEditor
   },
   store,
   vuex: {

@@ -10,8 +10,8 @@ const YT_HOSTNAME_VARIANTS = [
 
 const YT_VIDEO_ID = /^[\w\d-]{5,12}$/;
 
-function parseVideoIDFromURL(possibleUrl) {
-  const url = new URL(possibleUrl, true);
+function parseVideoIDFromURL(possiblyURL) {
+  const url = new URL(possiblyURL, true);
   return YT_HOSTNAME_VARIANTS.indexOf(url.hostname) > -1 ? url.query.v : null;
 }
 
