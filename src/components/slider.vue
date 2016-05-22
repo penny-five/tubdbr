@@ -28,7 +28,7 @@ export default {
       default: 'number'
     }
   },
-  ready: function() {
+  ready() {
     $(this.$el).slider({
       min: this.min,
       max: this.max,
@@ -39,13 +39,13 @@ export default {
     });
   },
   watch: {
-    min: function(min) {
+    min(min) {
       $(this.$el).slider('setAttribute', 'min', min);
     },
-    max: function(max) {
+    max(max) {
       $(this.$el).slider('setAttribute', 'max', max);
     },
-    value: function(value) {
+    value(value) {
       $(this.$el).slider('setValue', value);
     }
   }

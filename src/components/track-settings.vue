@@ -50,16 +50,16 @@ export default {
     SliderWidget
   },
   methods: {
-    onClear: function() {
+    onClear() {
       this.$emit('clear');
     },
-    onChangeSource: function(source) {
+    onChangeSource(source) {
       this.$emit('change-source', source);
     },
-    onChangeVolume: function(volume) {
+    onChangeVolume(volume) {
       this.$emit('change-volume', volume);
     },
-    onChangeDelay: function(delay) {
+    onChangeDelay(delay) {
       this.$emit('change-delay', delay);
     }
   }

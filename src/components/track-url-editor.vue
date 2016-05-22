@@ -16,7 +16,7 @@ export default {
     source: String
   },
   methods: {
-    onInput: function() {
+    onInput() {
       this.$emit('change', this.source);
     }
   }

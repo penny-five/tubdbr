@@ -19,10 +19,10 @@ export default {
     details: Object
   },
   methods: {
-    createYoutubeLink: function() {
+    createYoutubeLink() {
       return `https://www.youtube.com/watch?v=${this.details.id}`;
     },
-    onClearClicked: function() {
+    onClearClicked() {
       this.$emit('clear');
     }
   }

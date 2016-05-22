@@ -40,12 +40,12 @@ export default {
     }
   },
   computed: {
-    isTimeFormat: function() {
+    isTimeFormat() {
       return this.format === 'time';
     }
   },
   watch: {
-    value: function(value) {
+    value(value) {
       this.$emit('change', value);
     }
   }
