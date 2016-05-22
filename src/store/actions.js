@@ -1,7 +1,7 @@
 import { parseVideoID } from '../utils';
 import { fetchVideoMetadata } from './api';
 
-function tryFetchVideoMetadata(source, cb) {
+function tryFetchMetadata(source, cb) {
   const videoID = parseVideoID(source);
   if (videoID !== null) {
     fetchVideoMetadata(videoID).then(cb);
@@ -12,13 +12,18 @@ export function updateAudioTrackMetadata({ dispatch }, metadata) {
   dispatch('UPDATE_AUDIO_TRACK_METADATA', metadata);
 }
 
-export function updateAudioTrackSource(store, source) {
-  store.dispatch('UPDATE_AUDIO_TRACK_SOURCE', source);
-  tryFetchVideoMetadata(source, metadata => {
+export function fetchAudioTrackMetadata(store) {
+  const source = store.state.audioTrack.source;
+  tryFetchMetadata(source, metadata => {
     if (store.state.audioTrack.source === source) {
       updateAudioTrackMetadata(store, metadata);
     }
   });
+}
+
+export function updateAudioTrackSource(store, source) {
+  store.dispatch('UPDATE_AUDIO_TRACK_SOURCE', source);
+  fetchAudioTrackMetadata(store);
 }
 
 export function updateAudioTrackVolume({ dispatch }, volume) {
@@ -37,13 +42,18 @@ export function updateVideoTrackMetadata({ dispatch }, metadata) {
   dispatch('UPDATE_VIDEO_TRACK_METADATA', metadata);
 }
 
-export function updateVideoTrackSource(store, source) {
-  store.dispatch('UPDATE_VIDEO_TRACK_SOURCE', source);
-  tryFetchVideoMetadata(source, metadata => {
+export function fetchVideoTrackMetadata(store) {
+  const source = store.state.videoTrack.source;
+  tryFetchMetadata(source, metadata => {
     if (store.state.videoTrack.source === source) {
       updateVideoTrackMetadata(store, metadata);
     }
   });
+}
+
+export function updateVideoTrackSource(store, source) {
+  store.dispatch('UPDATE_VIDEO_TRACK_SOURCE', source);
+  fetchVideoTrackMetadata(store);
 }
 
 export function updateVideoTrackVolume({ dispatch }, volume) {
