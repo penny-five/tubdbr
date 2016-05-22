@@ -33,7 +33,7 @@ export default {
       min: this.min,
       max: this.max,
       value: this.value,
-      formatter: this.format === 'time' ? formatDuration : null
+      formatter: this.format === 'duration' ? formatDuration : null
     }).on('change', event => {
       this.value = event.value.newValue;
     });
