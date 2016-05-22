@@ -1,7 +1,5 @@
 import _ from 'lodash';
 import Vue from 'vue';
-import 'moment';
-import 'moment-duration-format';
 
 import { parseDuration, formatDuration } from 'utils';
 import App from './app';

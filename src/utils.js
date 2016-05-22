@@ -1,4 +1,5 @@
 import moment from 'moment';
+import 'moment-duration-format';
 import URL from 'url-parse';
 
 const YT_HOSTNAME_VARIANTS = [
