@@ -72,6 +72,11 @@ $slider-border-size: 1px;
       margin-left: $slider-handle-radius*-1;
       background: white;
       border: $slider-border-size solid $color-highlight-dark;
+
+      &:focus {
+        border: $slider-border-size*2 solid $color-primary;
+        outline: none;
+      }
     }
     .slider-track {
       height: $slider-track-height;
