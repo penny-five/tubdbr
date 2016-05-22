@@ -1,25 +1,18 @@
 <template>
   <div class="slider-widget">
-    <template v-if="isDurationFormat">
-      <duration-input :min="min" :max="max" :value.sync="value"></duration-input>
-    </template>
-    <template v-else>
-      <number-input :min="min" :max="max" :value.sync="value"></number-input>
-    </template>
+    <input-field :min="min" :max="max" :value.sync="value" :format="format"></input-field>
     <slider :min="min" :max="max" :value.sync="value" :format="format"></slider>
   </div>
 </template>
 
 <script>
-import NumberInput from 'components/number-input';
-import DurationInput from 'components/duration-input';
+import InputField from 'components/input-field';
 import Slider from 'components/slider';
 
 export default {
   components: {
     Slider,
-    NumberInput,
-    DurationInput
+    InputField
   },
   props: {
     min: {
@@ -37,11 +30,6 @@ export default {
     format: {
       type: String,
       default: 'number'
-    }
-  },
-  computed: {
-    isDurationFormat() {
-      return this.format === 'duration';
     }
   },
   watch: {

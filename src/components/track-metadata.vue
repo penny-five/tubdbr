@@ -13,7 +13,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     metadata: Object
@@ -27,7 +26,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <style lang="scss">
