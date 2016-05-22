@@ -4,7 +4,7 @@ import URL from 'url-parse';
 
 const LIST_VIDEOS_RESOURCE = 'https://www.googleapis.com/youtube/v3/videos';
 
-function buildRequest(resource, { part, id }) {
+function createRequest(resource, { part, id }) {
   const url = new URL(resource);
   url.set('query', {
     id,
@@ -16,7 +16,7 @@ function buildRequest(resource, { part, id }) {
 
 function parseResponse(res) {
   const item = res.items[0];
-  return item === null ? null : {
+  return item === undefined ? null : {
     id: item.id,
     title: item.snippet.title,
     channel: item.snippet.channelTitle,
@@ -29,7 +29,7 @@ export function fetchVideoDetails(videoId) {
   if (videoId === null) return Promise.resolve(null);
 
   return new Promise((resolve, reject) => {
-    $.get(buildRequest(LIST_VIDEOS_RESOURCE, {
+    $.get(createRequest(LIST_VIDEOS_RESOURCE, {
       id: videoId,
       part: ['snippet', 'contentDetails']
     })).done(res => {

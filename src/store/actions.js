@@ -1,48 +1,59 @@
 import { tryParseVideoId } from './helpers';
 import { fetchVideoDetails } from './api';
 
-export function setAudioDetails({ dispatch }, details) {
-  dispatch('SET_AUDIO_DETAILS', details);
+function tryFetchVideoDetails(source, cb) {
+  const videoId = tryParseVideoId(source);
+  if (videoId !== null) {
+    fetchVideoDetails(videoId).then(cb);
+  }
 }
 
-export function setAudioSource(store, source) {
-  store.dispatch('SET_AUDIO_SOURCE', source);
-  fetchVideoDetails(tryParseVideoId(source)).then(details => {
-    setAudioDetails(store, details);
+export function updateAudioTrackDetails({ dispatch }, details) {
+  dispatch('UPDATE_AUDIO_TRACK_DETAILS', details);
+}
+
+export function updateAudioTrackSource(store, source) {
+  store.dispatch('UPDATE_AUDIO_TRACK_SOURCE', source);
+  tryFetchVideoDetails(source, details => {
+    if (store.state.audioTrack.source === source) {
+      updateAudioTrackDetails(store, details);
+    }
   });
 }
 
-export function setAudioVolume({ dispatch }, volume) {
-  dispatch('SET_AUDIO_VOLUME', volume);
+export function updateAudioTrackVolume({ dispatch }, volume) {
+  dispatch('UPDATE_AUDIO_TRACK_VOLUME', volume);
 }
 
-export function setAudioDelay({ dispatch }, delay) {
-  dispatch('SET_AUDIO_DELAY', delay);
+export function updateAudioTrackDelay({ dispatch }, delay) {
+  dispatch('UPDATE_AUDIO_TRACK_DELAY', delay);
 }
 
-export function clearAudio({ dispatch }) {
-  dispatch('CLEAR_AUDIO');
+export function clearAudioTrack({ dispatch }) {
+  dispatch('CLEAR_AUDIO_TRACK');
 }
 
-export function setVideoDetails({ dispatch }, details) {
-  dispatch('SET_VIDEO_DETAILS', details);
+export function updateVideoTrackDetails({ dispatch }, details) {
+  dispatch('UPDATE_VIDEO_TRACK_DETAILS', details);
 }
 
-export function setVideoSource(store, source) {
-  store.dispatch('SET_VIDEO_SOURCE', source);
-  fetchVideoDetails(tryParseVideoId(source)).then(details => {
-    setVideoDetails(store, details);
+export function updateVideoTrackSource(store, source) {
+  store.dispatch('UPDATE_VIDEO_TRACK_SOURCE', source);
+  tryFetchVideoDetails(source, details => {
+    if (store.state.videoTrack.source === source) {
+      updateVideoTrackDetails(store, details);
+    }
   });
 }
 
-export function setVideoVolume({ dispatch }, volume) {
-  dispatch('SET_VIDEO_VOLUME', volume);
+export function updateVideoTrackVolume({ dispatch }, volume) {
+  dispatch('UPDATE_VIDEO_TRACK_VOLUME', volume);
 }
 
-export function setVideoDelay({ dispatch }, delay) {
-  dispatch('SET_VIDEO_DELAY', delay);
+export function updateVideoTrackDelay({ dispatch }, delay) {
+  dispatch('UPDATE_VIDEO_TRACK_DELAY', delay);
 }
 
-export function clearVideo({ dispatch }) {
-  dispatch('CLEAR_VIDEO');
+export function clearVideoTrack({ dispatch }) {
+  dispatch('CLEAR_VIDEO_TRACK');
 }

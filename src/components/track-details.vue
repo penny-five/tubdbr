@@ -1,8 +1,10 @@
 <template>
   <div class="track-details">
-    <img :src="thumbnail" class="track-details__thumbnail"></img>
+    <img :src="details.thumbnail" class="track-details__thumbnail"></img>
     <div class="track-details__title-wrapper">
-      <a :href="createYoutubeLink()" target="_blank" class="track-details__title">{{ title }}</a>
+      <a :href="createYoutubeLink()" target="_blank" class="track-details__title">
+        {{ details.title }}
+      </a>
     </div>
     <button class="track-details__clear-btn" @click="onClearClicked">
       <span class="glyphicon glyphicon-remove"></span>
@@ -14,14 +16,11 @@
 
 export default {
   props: {
-    id: String,
-    title: String,
-    channel: String,
-    thumbnail: String
+    details: Object
   },
   methods: {
     createYoutubeLink: function() {
-      return `https://www.youtube.com/watch?v=${this.id}`;
+      return `https://www.youtube.com/watch?v=${this.details.id}`;
     },
     onClearClicked: function() {
       this.$emit('clear');
@@ -34,14 +33,18 @@ export default {
 <style lang="scss">
 @import "../styles/variables";
 
+$height: $settings-row-height;
+$thumbnail-width: $height * (16/9);
+$clear-btn-width: $settings-row-control-width;
+
 .track-details {
   display: block;
 
-  padding-right: 60px;
+  padding-right: $clear-btn-width + $base-margin;
 
   .track-details__thumbnail {
-    width: 34px * (16 / 9);
-    height: 34px;
+    width: $thumbnail-width;
+    height: $height;
 
     object-fit: cover;
     border: 1px solid $color-highlight-light;
@@ -50,9 +53,9 @@ export default {
   .track-details__title-wrapper {
     position: absolute;
     top: 0;
-    right: 50px + 10px;
+    right: $clear-btn-width + $base-margin;
     bottom: 0;
-    left: 34px * (16 / 9) + 10px;
+    left: $thumbnail-width + $base-margin;
 
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -64,7 +67,7 @@ export default {
   }
 
   .track-details__title {
-    line-height: 34px;
+    line-height: $height;
   }
 
   .track-details__clear-btn {
@@ -72,8 +75,8 @@ export default {
     top: 0;
     right: 0;
 
-    width: 50px;
-    height: 34px;
+    width: $clear-btn-width;
+    height: $height;
 
     color: $color-highlight-dark;
     border: none;

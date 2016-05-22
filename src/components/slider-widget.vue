@@ -37,7 +37,9 @@ export default {
 </script>
 
 <style lang="scss">
-$input-width: 50px;
+@import "../styles/variables";
+
+$input-width: $settings-row-control-width;
 
 .slider-widget {
   position: relative;

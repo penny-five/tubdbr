@@ -1,25 +1,34 @@
 <template>
   <div class="track-settings">
     <div class="track-action">
-      <div v-if="details" transition="fade">
+      <div v-if="track.details" transition="fade">
         <track-details
-          :id="details.id"
-          :title="details.title"
-          :channel="details.channel"
-          :thumbnail="details.thumbnail"
+          :details="track.details"
           @clear="onClear">
         </track-details>
       </div>
       <div v-else transition="fade">
-        <track-url-editor :source.sync="source"></track-url-editor>
+        <track-url-editor
+          :source="track.source"
+          @change="onChangeSource">
+        </track-url-editor>
       </div>
     </div>
-    <template v-if="details">
+    <template v-if="track.details">
       <label>viive</label>
-      <slider-widget :min="0" :max="details.duration" :value.sync="delay"></slider-widget>
+      <slider-widget
+        :min="0"
+        :max="track.details.duration"
+        :value="track.delay"
+        @change="onChangeDelay">
+      </slider-widget>
     </template>
     <label>volyymi</label>
-    <slider-widget :min="0" :max="100" :value.sync="volume"></slider-widget>
+    <slider-widget
+      :min="0" :max="100"
+      :value="track.volume"
+      @change="onChangeVolume">
+    </slider-widget>
   </div>
 </template>
 
@@ -30,10 +39,7 @@ import SliderWidget from 'components/slider-widget';
 
 export default {
   props: {
-    source: String,
-    delay: Number,
-    volume: Number,
-    details: Object
+    track: Object
   },
   components: {
     TrackUrlEditor,
@@ -43,32 +49,32 @@ export default {
   methods: {
     onClear: function() {
       this.$emit('clear');
-    }
-  },
-  watch: {
-    source: function(source) {
-      this.$emit('source', source);
     },
-    delay: function(delay) {
-      this.$emit('delay', delay);
+    onChangeSource: function(source) {
+      this.$emit('change-source', source);
     },
-    volume: function(volume) {
-      this.$emit('volume', volume);
+    onChangeVolume: function(volume) {
+      this.$emit('change-volume', volume);
+    },
+    onChangeDelay: function(delay) {
+      this.$emit('change-delay', delay);
     }
   }
 };
 </script>
 
 <style lang="scss">
+@import "../styles/variables";
+
 .track-settings {
   position: relative;
-  padding-top: 34px;
+  padding-top: $settings-row-height;
 
   > .track-action {
     top: 0;
     left: 0;
     right: 0;
-    height: 34px;
+    height: $settings-row-height;
 
     > * {
       position: absolute;
@@ -76,14 +82,13 @@ export default {
     }
   }
 
-  .fade-enter {
+  .fade-transition {
     opacity: 1;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
   }
 
-  .fade-leave {
+  .fade-enter, .fade-leave {
     opacity: 0;
-    transition: opacity 0.2s ease;
   }
 }
 </style>

@@ -3,15 +3,15 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const initialState = {
-  audio: {
+  audioTrack: {
     source: null,
-    volume: 80,
+    volume: 50,
     delay: 0,
     details: null
   },
-  video: {
+  videoTrack: {
     source: null,
-    volume: 50,
+    volume: 80,
     delay: 0,
     details: null
   }
@@ -19,39 +19,39 @@ const initialState = {
 
 /* eslint-disable no-param-reassign */
 const mutations = {
-  'SET_AUDIO_SOURCE'(state, source) {
-    state.audio.source = source;
+  'UPDATE_AUDIO_TRACK_SOURCE'({ audioTrack }, source) {
+    audioTrack.source = source;
   },
-  'SET_AUDIO_DETAILS'(state, details) {
-    state.audio.details = details;
+  'UPDATE_AUDIO_TRACK_DETAILS'({ audioTrack }, details) {
+    audioTrack.details = details;
   },
-  'SET_AUDIO_DELAY'(state, delay) {
-    state.audio.delay = delay;
+  'UPDATE_AUDIO_TRACK_DELAY'({ audioTrack }, delay) {
+    audioTrack.delay = delay;
   },
-  'SET_AUDIO_VOLUME'(state, volume) {
-    state.audio.volume = volume;
+  'UPDATE_AUDIO_TRACK_VOLUME'({ audioTrack }, volume) {
+    audioTrack.volume = volume;
   },
-  'CLEAR_AUDIO'(state) {
-    state.audio.source = null;
-    state.audio.details = null;
-    state.audio.delay = 0;
+  'CLEAR_AUDIO_TRACK'({ audioTrack }) {
+    audioTrack.source = null;
+    audioTrack.details = null;
+    audioTrack.delay = 0;
   },
-  'SET_VIDEO_SOURCE'(state, source) {
-    state.video.source = source;
+  'UPDATE_VIDEO_TRACK_SOURCE'({ videoTrack }, source) {
+    videoTrack.source = source;
   },
-  'SET_VIDEO_DETAILS'(state, details) {
-    state.video.details = details;
+  'UPDATE_VIDEO_TRACK_DETAILS'({ videoTrack }, details) {
+    videoTrack.details = details;
   },
-  'SET_VIDEO_DELAY'(state, delay) {
-    state.video.delay = delay;
+  'UPDATE_VIDEO_TRACK_DELAY'({ videoTrack }, delay) {
+    videoTrack.delay = delay;
   },
-  'SET_VIDEO_VOLUME'(state, volume) {
-    state.video.volume = volume;
+  'UPDATE_VIDEO_TRACK_VOLUME'({ videoTrack }, volume) {
+    videoTrack.volume = volume;
   },
-  'CLEAR_VIDEO'(state) {
-    state.video.source = null;
-    state.video.details = null;
-    state.audio.delay = 0;
+  'CLEAR_VIDEO_TRACK'({ videoTrack }) {
+    videoTrack.source = null;
+    videoTrack.details = null;
+    videoTrack.delay = 0;
   }
 };
 /* eslint-enable no-param-reassign */

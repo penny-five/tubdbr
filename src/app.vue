@@ -6,27 +6,21 @@
         <div class="col-md-6">
           <h2>Video</h2>
           <track-settings
-            :source="video.source"
-            :volume="video.volume"
-            :delay="video.delay"
-            :details="video.details"
-            @source="setVideoSource"
-            @volume="setVideoVolume"
-            @delay="setVideoDelay"
-            @clear="clearVideo">
+            :track="videoTrack"
+            @change-source="updateVideoTrackSource"
+            @change-volume="updateVideoTrackVolume"
+            @change-delay="updateVideoTrackDelay"
+            @clear="clearVideoTrack">
           </track-settings>
         </div>
         <div class="col-md-6">
           <h2>Audio</h2>
           <track-settings
-            :source="audio.source"
-            :volume="audio.volume"
-            :delay="audio.delay"
-            :details="audio.details"
-            @source="setAudioSource"
-            @volume="setAudioVolume"
-            @delay="setAudioDelay"
-            @clear="clearAudio">
+            :track="audioTrack"
+            @change-source="updateAudioTrackSource"
+            @change-volume="updateAudioTrackVolume"
+            @change-delay="updateAudioTrackDelay"
+            @clear="clearAudioTrack">
           </track-settings>
         </div>
       </div>
@@ -52,9 +46,9 @@ export default {
   vuex: {
     actions,
     getters: {
-      audio: state => state.audio,
-      video: state => state.video,
-      hasVideoAndAudioTrackDetails: state => state.audio.details && state.video.details
+      audioTrack: state => state.audioTrack,
+      videoTrack: state => state.videoTrack,
+      hasVideoAndAudioTrackDetails: state => state.audioTrack.details && state.videoTrack.details
     }
   }
 };
