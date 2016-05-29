@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import _ from 'lodash';
+
 import InputField from 'components/input-field';
 import Slider from 'components/slider';
 
@@ -33,9 +35,9 @@ export default {
     }
   },
   watch: {
-    value(value) {
+    value: _.throttle(function(value) {
       this.$emit('change', value);
-    }
+    }, 200)
   }
 };
 </script>
