@@ -8,62 +8,32 @@ function tryFetchMetadata(source, cb) {
   }
 }
 
-export function updateAudioTrackMetadata({ dispatch }, metadata) {
-  dispatch('UPDATE_AUDIO_TRACK_METADATA', metadata);
+export function updateTrackMetadata({ dispatch }, track, metadata) {
+  dispatch('UPDATE_TRACK_METADATA', track, metadata);
 }
 
-export function fetchAudioTrackMetadata(store) {
-  const source = store.state.audioTrack.source;
+export function fetchTrackMetadata(store, track) {
+  const source = store.state.tracks[track].source;
   tryFetchMetadata(source, metadata => {
-    if (store.state.audioTrack.source === source) {
-      updateAudioTrackMetadata(store, metadata);
+    if (store.state.tracks[track].source === source) {
+      updateTrackMetadata(store, track, metadata);
     }
   });
 }
 
-export function updateAudioTrackSource(store, source) {
-  store.dispatch('UPDATE_AUDIO_TRACK_SOURCE', source);
-  fetchAudioTrackMetadata(store);
+export function updateTrackSource(store, track, source) {
+  store.dispatch('UPDATE_TRACK_SOURCE', track, source);
+  fetchTrackMetadata(store, track);
 }
 
-export function updateAudioTrackVolume({ dispatch }, volume) {
-  dispatch('UPDATE_AUDIO_TRACK_VOLUME', volume);
+export function updateTrackVolume({ dispatch }, track, volume) {
+  dispatch('UPDATE_TRACK_VOLUME', track, volume);
 }
 
-export function updateAudioTrackDelay({ dispatch }, delay) {
-  dispatch('UPDATE_AUDIO_TRACK_DELAY', delay);
+export function updateTrackDelay({ dispatch }, track, delay) {
+  dispatch('UPDATE_TRACK_DELAY', track, delay);
 }
 
-export function clearAudioTrack({ dispatch }) {
-  dispatch('CLEAR_AUDIO_TRACK');
-}
-
-export function updateVideoTrackMetadata({ dispatch }, metadata) {
-  dispatch('UPDATE_VIDEO_TRACK_METADATA', metadata);
-}
-
-export function fetchVideoTrackMetadata(store) {
-  const source = store.state.videoTrack.source;
-  tryFetchMetadata(source, metadata => {
-    if (store.state.videoTrack.source === source) {
-      updateVideoTrackMetadata(store, metadata);
-    }
-  });
-}
-
-export function updateVideoTrackSource(store, source) {
-  store.dispatch('UPDATE_VIDEO_TRACK_SOURCE', source);
-  fetchVideoTrackMetadata(store);
-}
-
-export function updateVideoTrackVolume({ dispatch }, volume) {
-  dispatch('UPDATE_VIDEO_TRACK_VOLUME', volume);
-}
-
-export function updateVideoTrackDelay({ dispatch }, delay) {
-  dispatch('UPDATE_VIDEO_TRACK_DELAY', delay);
-}
-
-export function clearVideoTrack({ dispatch }) {
-  dispatch('CLEAR_VIDEO_TRACK');
+export function clearTrack({ dispatch }, track) {
+  dispatch('CLEAR_TRACK', track);
 }

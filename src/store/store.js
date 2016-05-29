@@ -9,64 +9,48 @@ import * as actions from './actions';
 const queryParams = qs.parse(location.search);
 
 const initialState = {
-  audioTrack: {
-    source: queryParams.audioSrc || null,
-    volume: _.clamp(parseInt(queryParams.audioVol, 10) || 0, 0, 100),
-    delay: parseInt(queryParams.audioDelay, 10),
-    metadata: null
-  },
-  videoTrack: {
-    source: queryParams.videoSrc || null,
-    volume: _.clamp(parseInt(queryParams.videoVol, 10) || 0, 0, 100),
-    delay: parseInt(queryParams.videoDelay, 10),
-    metadata: null
+  tracks: {
+    audio: {
+      source: queryParams.audioSrc || null,
+      volume: _.clamp(parseInt(queryParams.audioVol, 10) || 0, 0, 100),
+      delay: parseInt(queryParams.audioDelay, 10),
+      metadata: null
+    },
+    video: {
+      source: queryParams.videoSrc || null,
+      volume: _.clamp(parseInt(queryParams.videoVol, 10) || 0, 0, 100),
+      delay: parseInt(queryParams.videoDelay, 10),
+      metadata: null
+    }
   }
 };
 
 const initMiddleware = {
-  onInit({ videoTrack, audioTrack }, store) {
-    if (videoTrack.source) actions.fetchVideoTrackMetadata(store);
-    if (audioTrack.source) actions.fetchAudioTrackMetadata(store);
+  onInit({ tracks }, store) {
+    if (tracks.audio.source) actions.fetchVideoTrackMetadata(store);
+    if (tracks.video.source) actions.fetchAudioTrackMetadata(store);
   }
 };
 
 /* eslint-disable no-param-reassign */
 const mutations = {
-  'UPDATE_AUDIO_TRACK_SOURCE'({ audioTrack }, source) {
-    audioTrack.source = source;
+  'UPDATE_TRACK_SOURCE'({ tracks }, track, source) {
+    tracks[track].source = source;
   },
-  'UPDATE_AUDIO_TRACK_METADATA'({ audioTrack }, metadata) {
-    audioTrack.metadata = metadata;
-    audioTrack.delay = _.clamp(audioTrack.delay, 0, metadata.duration);
+  'UPDATE_TRACK_METADATA'({ tracks }, track, metadata) {
+    tracks[track].metadata = metadata;
+    tracks[track].delay = _.clamp(tracks[track].delay, 0, metadata.duration);
   },
-  'UPDATE_AUDIO_TRACK_DELAY'({ audioTrack }, delay) {
-    audioTrack.delay = delay;
+  'UPDATE_TRACK_DELAY'({ tracks }, track, delay) {
+    tracks[track].delay = delay;
   },
-  'UPDATE_AUDIO_TRACK_VOLUME'({ audioTrack }, volume) {
-    audioTrack.volume = volume;
+  'UPDATE_TRACK_VOLUME'({ tracks }, track, volume) {
+    tracks[track].volume = volume;
   },
-  'CLEAR_AUDIO_TRACK'({ audioTrack }) {
-    audioTrack.source = null;
-    audioTrack.metadata = null;
-    audioTrack.delay = 0;
-  },
-  'UPDATE_VIDEO_TRACK_SOURCE'({ videoTrack }, source) {
-    videoTrack.source = source;
-  },
-  'UPDATE_VIDEO_TRACK_METADATA'({ videoTrack }, metadata) {
-    videoTrack.metadata = metadata;
-    videoTrack.delay = _.clamp(videoTrack.delay, 0, metadata.duration);
-  },
-  'UPDATE_VIDEO_TRACK_DELAY'({ videoTrack }, delay) {
-    videoTrack.delay = delay;
-  },
-  'UPDATE_VIDEO_TRACK_VOLUME'({ videoTrack }, volume) {
-    videoTrack.volume = volume;
-  },
-  'CLEAR_VIDEO_TRACK'({ videoTrack }) {
-    videoTrack.source = null;
-    videoTrack.metadata = null;
-    videoTrack.delay = 0;
+  'CLEAR_TRACK'({ tracks }, track) {
+    tracks[track].source = null;
+    tracks[track].metadata = null;
+    tracks[track].delay = 0;
   }
 };
 /* eslint-enable no-param-reassign */
