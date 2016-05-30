@@ -23,6 +23,7 @@
   "dependencies": {
     "bootstrap-sass": "3.3.6",
     "bootstrap-slider": "7.1.0",
+    "duration-js": "3.6.0",
     "jquery": "2.2.4",
     "lodash": "4.13.1",
     "moment": "2.13.0",

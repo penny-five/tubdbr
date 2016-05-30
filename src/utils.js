@@ -1,6 +1,7 @@
 import moment from 'moment';
 import 'moment-duration-format';
 import URL from 'url-parse';
+import Duration from 'duration-js';
 
 const YT_HOSTNAME_VARIANTS = [
   'www.youtube.com',
@@ -11,14 +12,46 @@ const YT_HOSTNAME_VARIANTS = [
 
 const YT_VIDEO_ID = /^[\w\d-]{5,12}$/;
 
-function parseVideoIDFromURL(possiblyURL) {
-  const url = new URL(possiblyURL, true);
-  return YT_HOSTNAME_VARIANTS.indexOf(url.hostname) > -1 ? url.query.v : null;
+const isYouTubeVideoID = input => YT_VIDEO_ID.test(input);
+
+const isYouTubeURL = url => YT_HOSTNAME_VARIANTS.indexOf(url.hostname) > -1;
+
+function parseVideoIdFromURL(url) {
+  const id = url.query.v;
+  return isYouTubeVideoID(id) ? id : null;
 }
 
-export function parseVideoID(input) {
-  const id = parseVideoIDFromURL(input) || input;
-  return YT_VIDEO_ID.exec(id) !== null ? id : null;
+function parseVideoDelayFromURL({ query: { t } }) {
+  try {
+    return new Duration(t).seconds();
+  } catch (err) {
+    return parseInt(t, 10);
+  }
+}
+
+const idToProps = id => ({
+  id,
+  delay: 0
+});
+
+const urlToProps = url => ({
+  id: parseVideoIdFromURL(url),
+  delay: parseVideoDelayFromURL(url)
+});
+
+const emptyProps = () => ({
+  id: null,
+  delay: 0
+});
+
+export function parseVideoProps(input) {
+  const url = new URL(input, true);
+  if (isYouTubeVideoID(input)) {
+    return idToProps(input);
+  } else if (isYouTubeURL(url)) {
+    return urlToProps(url);
+  }
+  return emptyProps();
 }
 
 export function formatDuration(value) {

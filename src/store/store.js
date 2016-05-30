@@ -26,9 +26,9 @@ const initialState = {
 };
 
 const initMiddleware = {
-  onInit({ tracks }, store) {
-    if (tracks.audio.source) actions.fetchVideoTrackMetadata(store);
-    if (tracks.video.source) actions.fetchAudioTrackMetadata(store);
+  onInit({ tracks: { audio, video } }, store) {
+    if (audio.source) actions.fetchTrackMetadata(store, 'audio');
+    if (video.source) actions.fetchTrackMetadata(store, 'video');
   }
 };
 
