@@ -17,6 +17,7 @@
           <h2>Audio</h2>
           <track-editor
             :track="audioTrack"
+            :suggestions="suggestedAudioTracks"
             @change-source="partial(updateTrackSource, 'audio').apply(this, $arguments)"
             @change-volume="partial(updateTrackVolume, 'audio').apply(this, $arguments)"
             @change-delay="partial(updateTrackDelay, 'audio').apply(this, $arguments)"
@@ -50,6 +51,7 @@ export default {
     getters: {
       audioTrack: ({ tracks }) => tracks.audio,
       videoTrack: ({ tracks }) => tracks.video,
+      suggestedAudioTracks: state => state.suggestedAudioTracks,
       hasVideoAndAudioTrackMetadata: ({ tracks }) => tracks.audio.metadata && tracks.video.metadata
     }
   },

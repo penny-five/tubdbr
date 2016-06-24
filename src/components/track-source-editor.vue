@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="track-source-editor">
     <input
       type="text"
       class="form-control"
@@ -7,18 +7,57 @@
       @input.stop="onInput | debounce 500"
       @change.stop
       v-model="source">
+    <dropdown
+      :items="suggestionTitles"
+      @select="onSelectSuggestion"
+      v-show="hasSuggestions">
+    </dropdown>
   </div>
 </template>
 
 <script>
+import Dropdown from 'components/dropdown';
+
 export default {
+  components: {
+    Dropdown
+  },
   props: {
-    source: String
+    source: String,
+    suggestions: Array
+  },
+  computed: {
+    suggestionTitles() {
+      return this.suggestions.map(s => s.title);
+    },
+    hasSuggestions() {
+      return this.suggestions.length > 0;
+    }
   },
   methods: {
     onInput() {
+      this.$emit('change', this.source);
+    },
+    onSelectSuggestion(index) {
+      this.source = this.suggestions[index].id;
       this.$emit('change', this.source);
     }
   }
 };
 </script>
+
+<style lang="scss">
+.track-source-editor {
+  position: relative;
+
+  > .form-control {
+    padding-right: 50px;
+  }
+
+  > .dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+</style>

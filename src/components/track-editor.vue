@@ -10,6 +10,7 @@
       <div v-else transition="fade">
         <track-source-editor
           :source="track.source"
+          :suggestions="suggestions"
           @change="onChangeSource">
         </track-source-editor>
       </div>
@@ -41,13 +42,17 @@ import TrackMetadata from 'components/track-metadata';
 import SliderWidget from 'components/slider-widget';
 
 export default {
-  props: {
-    track: Object
-  },
   components: {
     TrackSourceEditor,
     TrackMetadata,
     SliderWidget
+  },
+  props: {
+    track: Object,
+    suggestions: {
+      type: Array,
+      default: () => []
+    }
   },
   methods: {
     onClear() {

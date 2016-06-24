@@ -26,15 +26,22 @@ h2 {
   font-weight: 800;
   text-align: center;
 
-  color: $color-text;
+  color: $color-text-light;
 }
 
-a, a:hover, a:focus {
+a {
   color: $color-primary;
+  &:hover {
+    color: $color-primary;
+  }
+  &:focus {
+    color: $color-primary;
+    outline: $color-primary;
+  }
 }
 
 label {
-  color: $color-text;
+  color: $color-text-light;
   margin: 2rem 0 1rem 0;
 }
 

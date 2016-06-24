@@ -43,6 +43,10 @@ module.exports = {
         loader: 'babel'
       },
       {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url?limit=10000&mimetype=application/font-woff'
       },

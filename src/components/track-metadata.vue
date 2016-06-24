@@ -6,7 +6,7 @@
         {{ metadata.title }}
       </a>
     </div>
-    <button class="track-metadata__clear-btn" @click="onClearClicked">
+    <button class="track-metadata__clear-btn" @click="onClearClick">
       <span class="glyphicon glyphicon-remove"></span>
     </button>
   </div>
@@ -21,7 +21,7 @@ export default {
     createYoutubeLink() {
       return `https://www.youtube.com/watch?v=${this.metadata.id}`;
     },
-    onClearClicked() {
+    onClearClick() {
       this.$emit('clear');
     }
   }
