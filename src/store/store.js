@@ -7,6 +7,9 @@ Vue.use(Vuex);
 import suggestedAudioTracks from '../suggested_audio_tracks.json';
 import * as actions from './actions';
 
+const DEFAULT_VIDEO_TRACK_VOLUME = 80;
+const DEFAULT_AUDIO_TRACK_VOLUME = 40;
+
 const queryParams = qs.parse(location.search);
 
 const initialState = {
@@ -14,13 +17,13 @@ const initialState = {
   tracks: {
     audio: {
       source: queryParams.audioSrc || null,
-      volume: _.clamp(parseInt(queryParams.audioVol, 10) || 0, 0, 100),
+      volume: _.clamp(parseInt(queryParams.audioVol, 10) || DEFAULT_AUDIO_TRACK_VOLUME, 0, 100),
       delay: parseInt(queryParams.audioDelay, 10),
       metadata: null
     },
     video: {
       source: queryParams.videoSrc || null,
-      volume: _.clamp(parseInt(queryParams.videoVol, 10) || 0, 0, 100),
+      volume: _.clamp(parseInt(queryParams.videoVol, 10) || DEFAULT_VIDEO_TRACK_VOLUME, 0, 100),
       delay: parseInt(queryParams.videoDelay, 10),
       metadata: null
     }
