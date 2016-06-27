@@ -45,7 +45,7 @@ $clear-btn-width: $settings-row-control-width;
     height: $height;
 
     object-fit: cover;
-    border: 1px solid $color-highlight-light;
+    border: 1px solid $color-highlight-dark;
   }
 
   .track-metadata__title-wrapper {

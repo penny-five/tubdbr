@@ -16,3 +16,10 @@ $settings-row-height: 34px;
 $settings-row-control-width: 65px;
 
 $base-margin: 10px;
+
+$tooltip-padding: 4px 8px;
+$tooltip-font-size: 1.2rem;
+$tooltip-font-weight: 700;
+$tooltip-background: $color-primary;
+$tooltip-arrow-size: 5px;
+$tooltip-transition: transform .2s .1s ease, opacity .2s .1s ease;

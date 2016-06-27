@@ -89,14 +89,5 @@ export default {
       left: 0; right: 0;
     }
   }
-
-  .fade-transition {
-    opacity: 1;
-    transition: opacity 0.2s ease;
-  }
-
-  .fade-enter, .fade-leave {
-    opacity: 0;
-  }
 }
 </style>

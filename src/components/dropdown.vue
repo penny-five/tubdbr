@@ -87,7 +87,7 @@ $arrow-size: 6px;
 
     transform: scale(0.5);
     transform-origin: top right;
-    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in;
+    transition: opacity .15s .2s ease-in-out, transform .15s .2s ease-in;
   }
 
   .dropdown__item {

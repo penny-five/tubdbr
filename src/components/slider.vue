@@ -73,6 +73,8 @@ $slider-border-size: 1px;
       background: white;
       border: $slider-border-size solid $color-highlight-dark;
 
+      box-shadow: 0 2px 3px transparentize(black, 0.75);
+
       &:focus {
         border: $slider-border-size*2 solid $color-primary;
         outline: none;
@@ -92,19 +94,27 @@ $slider-border-size: 1px;
 
     > .tooltip {
       bottom: 38px;
-      font-family: $font-family-sans-serif;
-      font-weight: 700;
 
-      transform: scale(0.5);
-      transform-origin: bottom;
-      transition: opacity 0.15s ease-in-out, transform 0.15s ease-out;
+      padding: $tooltip-padding;
+
+      opacity: 0;
+
+      font-family: $font-family-sans-serif;
+      font-weight: $tooltip-font-weight;
+      font-size: $tooltip-font-size;
+
+      transform: scale(0.8) translateY(50%);
+      transform-origin: 50% 100%;
+      transition: $tooltip-transition;
 
       &.in {
         transform: scale(1);
+        opacity: 1;
       }
 
       > .tooltip-inner {
         background-color: $color-primary;
+        box-shadow: 0 2px 3px transparentize(black, 0.8);
       }
       > .tooltip-arrow {
         border-top-color: $color-primary;

@@ -3,6 +3,21 @@
     <h1>tbdbr</h1>
     <div class="container">
       <div class="row">
+        <div class="col-md-12">
+          <div style="position: relative">
+            <div v-if="hasVideoAndAudioTrackMetadata" transition="fade-slow">
+              <video-player
+                :audio-track="audioTrack"
+                :video-track="videoTrack">
+              </video-player>
+            </div>
+            <div v-else transition="fade-slow">
+              <video-placeholder></video-placeholder>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
           <h2>Video</h2>
           <track-editor
@@ -25,11 +40,6 @@
           </track-editor>
         </div>
       </div>
-      <div class="row" v-show="hasVideoAndAudioTrackMetadata">
-        <div class="col-md-12">
-          <button class="btn center-block">dubstep</button>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -39,10 +49,14 @@ import _ from 'lodash';
 
 import store from './store/store';
 import * as actions from './store/actions';
+import VideoPlayer from 'components/video-player';
+import VideoPlaceholder from 'components/video-placeholder';
 import TrackEditor from 'components/track-editor';
 
 export default {
   components: {
+    VideoPlayer,
+    VideoPlaceholder,
     TrackEditor
   },
   store,

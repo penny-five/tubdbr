@@ -55,7 +55,7 @@ export function parseVideoProps(input) {
 }
 
 export function formatDuration(value) {
-  return moment.duration(value, 'seconds').format('m:ss', { trim: false });
+  return moment.duration(value, 'seconds').format('mm:ss', { trim: false });
 }
 
 export function parseDuration(value) {

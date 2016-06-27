@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
 
+@import "~plyr/src/scss/plyr";
 @import "./bootstrap";
 @import "./variables";
 
@@ -8,10 +9,13 @@ html {
 }
 
 body {
+  padding-bottom: 64px;
   background-color: $color-background;
 }
 
 h1 {
+  margin-bottom: 4rem;
+
   font-size: 5.5rem;
   font-weight: 900;
   text-align: center;
@@ -20,7 +24,7 @@ h1 {
 }
 
 h2 {
-  margin: 4rem 0 2rem;
+  margin: 5rem 0 2rem;
 
   font-size: 1.8rem;
   font-weight: 800;
@@ -83,6 +87,7 @@ label {
   border-radius: 0;
   border: 1px solid $color-highlight-dark;
   background-color: $color-alt-background;
+  box-shadow: inset 0 2px 1px transparentize(black, 0.925);
 
   &::placeholder {
     color: $color-text-light;
@@ -90,6 +95,23 @@ label {
 
   &:focus {
     border: 1px solid $color-primary;
-    box-shadow: none;
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.075);
+  }
+}
+
+@each $name, $duration in (slow: 0.6s, normal: 0.4s, fast: 0.2s) {
+  .fade-#{$name}-transition {
+    opacity: 1;
+    transition: opacity $duration ease;
+  }
+
+  .fade-#{$name}-enter {
+    opacity: 0;
+  }
+
+  .fade-#{$name}-leave {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
   }
 }
