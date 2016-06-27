@@ -4,7 +4,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-import suggestedAudioTracks from '../suggested_audio_tracks.json';
+import suggestedAudioTracks from '../assets/suggested_audio_tracks.json';
 import * as actions from './actions';
 
 const DEFAULT_VIDEO_TRACK_VOLUME = 80;

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const htmlPluginOpts = {
   title: 'tbdbr',
-  template: 'src/index.ejs',
+  template: 'src/assets/index.ejs',
   hash: false
 };
 

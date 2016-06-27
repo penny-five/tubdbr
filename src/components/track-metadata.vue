@@ -2,7 +2,7 @@
   <div class="track-metadata">
     <img :src="metadata.thumbnail" class="track-metadata__thumbnail"></img>
     <div class="track-metadata__title-wrapper">
-      <a :href="createYoutubeLink()" target="_blank" class="track-metadata__title">
+      <a :href="link" target="_blank" class="track-metadata__title">
         {{ metadata.title }}
       </a>
     </div>
@@ -13,14 +13,18 @@
 </template>
 
 <script>
+import { createYoutubeLink } from '../utils';
+
 export default {
   props: {
     metadata: Object
   },
+  computed: {
+    link() {
+      return createYoutubeLink(this.metadata.id);
+    }
+  },
   methods: {
-    createYoutubeLink() {
-      return `https://www.youtube.com/watch?v=${this.metadata.id}`;
-    },
     onClearClick() {
       this.$emit('clear');
     }

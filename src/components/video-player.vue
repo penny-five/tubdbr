@@ -20,7 +20,7 @@
 <script>
 import plyr from 'plyr';
 
-import playerHtml from '../player_controls.html';
+import playerHtml from '../assets/player_controls.html';
 
 export default {
   props: {

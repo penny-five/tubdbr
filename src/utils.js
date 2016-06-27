@@ -54,6 +54,8 @@ export function parseVideoProps(input) {
   return emptyProps();
 }
 
+export const createYoutubeLink = videoId => `https://www.youtube.com/watch?v=${videoId}`;
+
 export function formatDuration(value) {
   return moment.duration(value, 'seconds').format('mm:ss', { trim: false });
 }

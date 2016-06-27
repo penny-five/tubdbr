@@ -2,7 +2,7 @@ import _ from 'lodash';
 import Vue from 'vue';
 
 import { parseDuration, formatDuration } from 'utils';
-import App from './app';
+import App from 'components/app';
 
 Vue.filter('clamp', {
   read: (value, min, max) => _.clamp(parseInt(value, 10) || 0, min, max),

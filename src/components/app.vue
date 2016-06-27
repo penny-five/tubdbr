@@ -47,8 +47,8 @@
 <script>
 import _ from 'lodash';
 
-import store from './store/store';
-import * as actions from './store/actions';
+import store from 'store/store';
+import * as actions from 'store/actions';
 import VideoPlayer from 'components/video-player';
 import VideoPlaceholder from 'components/video-placeholder';
 import TrackEditor from 'components/track-editor';
@@ -76,5 +76,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/base";
+@import "../styles/base";
 </style>
