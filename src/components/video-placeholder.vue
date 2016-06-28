@@ -32,7 +32,7 @@
 
   .video-placeholder__text {
     color: $color-text-light;
-    font-size: 1.6rem;
+    font-size: $font-size-medium;
   }
 }
 </style>

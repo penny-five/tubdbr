@@ -1,4 +1,12 @@
 $font-family-sans-serif: "Lato", sans-serif;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-ultrabold: 900;
+$font-size-tiny: 1.2rem;
+$font-size-small: 1.4rem;
+$font-size-medium: 1.6rem;
+$font-size-large: 1.8rem;
+
 
 $color-background: #304254;
 $color-alt-background: #2d3a48;
@@ -18,8 +26,8 @@ $settings-row-control-width: 65px;
 $base-margin: 10px;
 
 $tooltip-padding: 4px 8px;
-$tooltip-font-size: 1.2rem;
-$tooltip-font-weight: 700;
+$tooltip-font-size: $font-size-tiny;
+$tooltip-font-weight: $font-weight-bold;
 $tooltip-background: $color-primary;
 $tooltip-arrow-size: 5px;
 $tooltip-transition: transform .2s .1s ease, opacity .2s .1s ease;

@@ -165,8 +165,8 @@ export default {
 
     > .plyr__play-large__text {
       color: white;
-      font-size: 1.6rem;
-      font-weight: 700;
+      font-size: $font-size-medium;
+      font-weight: $font-weight-bold;
       text-transform: uppercase;
     }
 

@@ -6,9 +6,8 @@ Vue.use(Vuex);
 
 import suggestedAudioTracks from '../assets/suggested_audio_tracks.json';
 import * as actions from './actions';
+import * as consts from './constants';
 
-const DEFAULT_VIDEO_TRACK_VOLUME = 80;
-const DEFAULT_AUDIO_TRACK_VOLUME = 40;
 
 const queryParams = qs.parse(location.search);
 
@@ -16,15 +15,15 @@ const initialState = {
   suggestedAudioTracks,
   tracks: {
     audio: {
-      source: queryParams.audioSrc || null,
-      volume: _.clamp(parseInt(queryParams.audioVol, 10) || DEFAULT_AUDIO_TRACK_VOLUME, 0, 100),
-      delay: parseInt(queryParams.audioDelay, 10),
+      source: queryParams[consts.KEY_AUDIO_SOURCE] || null,
+      volume: _.clamp(parseInt(queryParams[consts.KEY_AUDIO_VOLUME], 10) || consts.DEFAULT_AUDIO_TRACK_VOLUME, 0, 100),
+      delay: parseInt(queryParams[consts.KEY_AUDIO_DELAY], 10),
       metadata: null
     },
     video: {
-      source: queryParams.videoSrc || null,
-      volume: _.clamp(parseInt(queryParams.videoVol, 10) || DEFAULT_VIDEO_TRACK_VOLUME, 0, 100),
-      delay: parseInt(queryParams.videoDelay, 10),
+      source: queryParams[consts.KEY_VIDEO_SOURCE] || null,
+      volume: _.clamp(parseInt(queryParams[consts.KEY_VIDEO_VOLUME], 10) || consts.DEFAULT_VIDEO_TRACK_VOLUME, 0, 100),
+      delay: parseInt(queryParams[consts.KEY_VIDEO_DELAY], 10),
       metadata: null
     }
   }
@@ -39,20 +38,20 @@ const initMiddleware = {
 
 /* eslint-disable no-param-reassign */
 const mutations = {
-  'UPDATE_TRACK_SOURCE'({ tracks }, track, source) {
+  [consts.MUTATION_UPDATE_TRACK_SOURCE]({ tracks }, track, source) {
     tracks[track].source = source;
   },
-  'UPDATE_TRACK_METADATA'({ tracks }, track, metadata) {
+  [consts.MUTATION_UPDATE_TRACK_METADATA]({ tracks }, track, metadata) {
     tracks[track].metadata = metadata;
     tracks[track].delay = _.clamp(tracks[track].delay, 0, metadata.duration);
   },
-  'UPDATE_TRACK_DELAY'({ tracks }, track, delay) {
+  [consts.MUTATION_UPDATE_TRACK_DELAY]({ tracks }, track, delay) {
     tracks[track].delay = delay;
   },
-  'UPDATE_TRACK_VOLUME'({ tracks }, track, volume) {
+  [consts.MUTATION_UPDATE_TRACK_VOLUME]({ tracks }, track, volume) {
     tracks[track].volume = volume;
   },
-  'CLEAR_TRACK'({ tracks }, track) {
+  [consts.MUTATION_CLEAR_TRACK]({ tracks }, track) {
     tracks[track].source = null;
     tracks[track].metadata = null;
     tracks[track].delay = 0;

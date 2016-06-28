@@ -28,16 +28,6 @@ export default {
       default: 'number'
     }
   },
-  ready() {
-    $(this.$el).slider({
-      min: this.min,
-      max: this.max,
-      value: this.value,
-      formatter: this.format === 'duration' ? formatDuration : null
-    }).on('change', event => {
-      this.value = event.value.newValue;
-    });
-  },
   watch: {
     min(min) {
       $(this.$el).slider('setAttribute', 'min', min);
@@ -48,6 +38,16 @@ export default {
     value(value) {
       $(this.$el).slider('setValue', value);
     }
+  },
+  ready() {
+    $(this.$el).slider({
+      min: this.min,
+      max: this.max,
+      value: this.value,
+      formatter: this.format === 'duration' ? formatDuration : null
+    }).on('change', event => {
+      this.value = event.value.newValue;
+    });
   }
 };
 </script>
