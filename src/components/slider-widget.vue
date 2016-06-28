@@ -1,7 +1,7 @@
 <template>
   <div class="slider-widget">
-    <input-field :min="min" :max="max" :value.sync="value" :format="format"></input-field>
-    <slider :min="min" :max="max" :value.sync="value" :format="format"></slider>
+    <input-field :min="min" :max="max" :value.sync="value" :format="format" :lazy="lazy"></input-field>
+    <slider :min="min" :max="max" :value.sync="value" :format="format" :lazy="lazy"></slider>
   </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
     format: {
       type: String,
       default: 'number'
+    },
+    lazy: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {

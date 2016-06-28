@@ -15,6 +15,7 @@
       "no-new": ["warn"],
       "object-shorthand": ["error", "always"],
       "space-before-function-paren": ["error", "never"],
+      "newline-per-chained-call": "off",
       "max-len": ["warn", 120]
     }
 }

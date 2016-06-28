@@ -26,6 +26,10 @@ export default {
     format: {
       type: String,
       default: 'number'
+    },
+    lazy: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -46,7 +50,9 @@ export default {
       value: this.value,
       formatter: this.format === 'duration' ? formatDuration : null
     }).on('change', event => {
-      this.value = event.value.newValue;
+      if (!this.lazy) this.value = event.target.value;
+    }).on('slideStop', event => {
+      if (this.lazy) this.value = event.target.value;
     });
   }
 };

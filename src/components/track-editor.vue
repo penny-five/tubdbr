@@ -21,6 +21,7 @@
         :min="0"
         :max="track.metadata.duration"
         :value="track.delay"
+        :lazy="true"
         format="duration"
         @change="onChangeDelay">
       </slider-widget>
@@ -30,6 +31,7 @@
       :min="0"
       :max="100"
       :value="track.volume"
+      :lazy="false"
       format="number"
       @change="onChangeVolume">
     </slider-widget>
