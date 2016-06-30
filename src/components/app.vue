@@ -8,7 +8,8 @@
             <div v-if="hasVideoAndAudioTrackMetadata" transition="fade-slow">
               <video-player
                 :audio-track="audioTrack"
-                :video-track="videoTrack">
+                :video-track="videoTrack"
+                @share="toggleShowSharing">
               </video-player>
             </div>
             <div v-else transition="fade-slow">
@@ -41,6 +42,7 @@
         </div>
       </div>
     </div>
+    <share-dialog v-if="showSharing" :url="url" @close="toggleShowSharing"></share-dialog>
   </div>
 </template>
 
@@ -49,15 +51,19 @@ import _ from 'lodash';
 
 import store from 'store/store';
 import * as actions from 'store/actions';
+import { createShareableURL } from '../utils';
+
 import VideoPlayer from 'components/video-player';
 import VideoPlaceholder from 'components/video-placeholder';
 import TrackEditor from 'components/track-editor';
+import ShareDialog from 'components/share-dialog';
 
 export default {
   components: {
     VideoPlayer,
     VideoPlaceholder,
-    TrackEditor
+    TrackEditor,
+    ShareDialog
   },
   store,
   vuex: {
@@ -65,8 +71,10 @@ export default {
     getters: {
       audioTrack: ({ tracks }) => tracks.audio,
       videoTrack: ({ tracks }) => tracks.video,
+      showSharing: state => state.showSharing,
       suggestedAudioTracks: state => state.suggestedAudioTracks,
-      hasVideoAndAudioTrackMetadata: ({ tracks }) => tracks.audio.metadata && tracks.video.metadata
+      hasVideoAndAudioTrackMetadata: ({ tracks }) => tracks.audio.metadata && tracks.video.metadata,
+      url: ({ tracks }) => createShareableURL(window.location, tracks.video, tracks.audio)
     }
   },
   methods: {

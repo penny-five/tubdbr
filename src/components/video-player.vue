@@ -107,8 +107,13 @@ export default {
       this.getAudioPlayer().seek(this.audioTrack.delay);
       this.getAudioPlayer().play();
     },
-    onRestartPlayback() {
+    onRestartPlayback(event) {
+      event.stopPropagation();
       this.restartPlayback();
+    },
+    onShare(event) {
+      event.stopPropagation();
+      this.$emit('share');
     }
   },
   ready() {
@@ -118,6 +123,7 @@ export default {
     this.$els.video.addEventListener('pause', this.onVideoPlayerPaused);
     this.$els.video.addEventListener('play', this.onVideoPlayerResumed);
     this.$els.video.addEventListener('restart', this.onRestartPlayback);
+    this.$els.video.addEventListener('share', this.onShare);
     this.$els.video.addEventListener('ended', this.onVideoPlayerEnded);
     this.$els.audio.addEventListener('ready', this.onAudioPlayerReady);
     this.$els.audio.addEventListener('ended', this.onAudioPlayerEnded);
@@ -188,9 +194,9 @@ export default {
   }
 
   .plyr__controls {
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    background: linear-gradient(transparent, transparentize(black, 0.7));
 
-    > button {
+    button {
       margin-left: 5px;
 
       border: 1px solid transparent;
@@ -205,6 +211,17 @@ export default {
         margin-left: 0;
       }
     }
+
+    &.plyr__controls--top {
+      top: 0;
+      bottom: auto;
+
+      padding: 10px 10px 50px;
+
+      flex-direction: row-reverse;
+
+      background: linear-gradient(transparentize(black, 0.7), transparent);
+    }
   }
 
   @media (min-width: 480px) {
@@ -216,6 +233,15 @@ export default {
         }
       }
     }
+  }
+
+  .plyr__time {
+    font-size: $font-size-small;
+  }
+
+  .plyr__share {
+    margin-right: 5px;
+    font-size: $font-size-small;
   }
 
   .plyr__tooltip {

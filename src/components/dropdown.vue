@@ -27,7 +27,7 @@ export default {
 @import "../styles/variables";
 
 $width: 40px;
-$height: $settings-row-height;
+$height: $control-height;
 $arrow-size: 6px;
 
 .dropdown {

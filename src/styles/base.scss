@@ -66,6 +66,12 @@ label {
     border: 1px solid $color-primary;
     box-shadow: inset 0 2px 1px transparentize(black, 0.925);
   }
+
+  &[readonly] {
+    color: $color-text-light;
+    border: 1px solid $color-highlight-dark;
+    background-color: $color-alt-background;
+  }
 }
 
 @each $name, $duration in (slow: 0.6s, normal: 0.4s, fast: 0.2s) {

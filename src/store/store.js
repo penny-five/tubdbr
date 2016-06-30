@@ -12,6 +12,7 @@ import * as consts from './constants';
 const queryParams = qs.parse(location.search);
 
 const initialState = {
+  showSharing: false,
   suggestedAudioTracks,
   tracks: {
     audio: {
@@ -55,6 +56,9 @@ const mutations = {
     tracks[track].source = null;
     tracks[track].metadata = null;
     tracks[track].delay = 0;
+  },
+  [consts.MUTATION_TOGGLE_SHOW_SHARING](state) {
+    state.showSharing = !state.showSharing;
   }
 };
 /* eslint-enable no-param-reassign */

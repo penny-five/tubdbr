@@ -35,7 +35,7 @@ export default {
 <style lang="scss">
 @import "../styles/variables";
 
-$height: $settings-row-height;
+$height: $control-height;
 $thumbnail-width: $height * (16/9);
 $clear-btn-width: $settings-row-control-width;
 

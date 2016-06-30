@@ -1,3 +1,6 @@
+import 'jquery';
+import 'bootstrap-sass';
+
 import _ from 'lodash';
 import Vue from 'vue';
 

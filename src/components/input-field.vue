@@ -1,9 +1,12 @@
 <template>
   <template v-if="this.format === 'number'">
-    <input class="form-control" number v-model="value | clamp min max" @change.stop :lazy="lazy">
+    <input class="form-control" number v-model="value | clamp min max" @change.stop :lazy="lazy" :readonly="readonly">
   </template>
   <template v-if="this.format === 'duration'">
-    <input class="form-control" v-model="value | duration" @change.stop :lazy="lazy">
+    <input class="form-control" v-model="value | duration" @change.stop :lazy="lazy" :readonly="readonly">
+  </template>
+  <template v-if="this.format === 'text'">
+    <input class="form-control" v-model="value" @change.stop :lazy="lazy" :readonly="readonly">
   </template>
 </template>
 
@@ -19,7 +22,6 @@ export default {
       default: 0
     },
     value: {
-      type: Number,
       default: 0
     },
     format: {
@@ -27,6 +29,10 @@ export default {
       default: 'number'
     },
     lazy: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
       type: Boolean,
       default: false
     }

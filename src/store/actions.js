@@ -41,3 +41,7 @@ export function updateTrackSource(store, track, source) {
 export function clearTrack({ dispatch }, track) {
   dispatch(consts.MUTATION_CLEAR_TRACK, track);
 }
+
+export function toggleShowSharing({ dispatch }) {
+  dispatch(consts.MUTATION_TOGGLE_SHOW_SHARING);
+}

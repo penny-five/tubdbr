@@ -4,8 +4,9 @@
     </svg>
     <span class="plyr__play-large__text">dubstep</span>
 </button>
+
 <div class="plyr__controls">
-    <button type="button" data-plyr="restart-dub" onclick="this.dispatchEvent(new Event('restart', { 'bubbles':true }))">
+    <button type="button" onclick="this.dispatchEvent(new Event('restart', { 'bubbles': true }))">
         <svg>
             <use xlink:href="#plyr-restart"></use>
         </svg>
@@ -26,11 +27,11 @@
     <span class="plyr__spacer"></span>
     <span class="plyr__time">
         <span class="plyr__sr-only">Current time</span>
-    <span class="plyr__time--current">00:00</span>
+        <span class="plyr__time--current">00:00</span>
     </span>
     <span class="plyr__time">
         <span class="plyr__sr-only">Duration</span>
-    <span class="plyr__time--duration">00:00</span>
+        <span class="plyr__time--duration">00:00</span>
     </span>
     <button type="button" data-plyr="fullscreen">
         <svg class="icon--exit-fullscreen">
@@ -41,4 +42,13 @@
         </svg>
         <span class="plyr__sr-only">Toggle Fullscreen</span>
     </button>
+</div>
+
+<div class="plyr__controls plyr__controls--top">
+    <div class="plyr__sharing">
+        <button type="button" onclick="this.dispatchEvent(new Event('share', { 'bubbles': true }))">
+          <span class="plyr__share">Jaa dubbaus</span>
+          <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+        </button>
+    </div>
 </div>

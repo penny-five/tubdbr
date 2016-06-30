@@ -1,13 +1,13 @@
 <template>
   <div class="track-editor">
     <div class="track-editor__action">
-      <div v-if="track.metadata" transition="fade">
+      <div v-if="track.metadata" transition="fade-fast">
         <track-metadata
           :metadata="track.metadata"
           @clear="onClear">
         </track-metadata>
       </div>
-      <div v-else transition="fade">
+      <div v-else transition="fade-fast">
         <track-source-editor
           :source="track.source"
           :suggestions="suggestions"
@@ -78,13 +78,13 @@ export default {
 
 .track-editor {
   position: relative;
-  padding-top: $settings-row-height;
+  padding-top: $control-height;
 
   > .track-editor__action {
     top: 0;
     left: 0;
     right: 0;
-    height: $settings-row-height;
+    height: $control-height;
 
     > * {
       position: absolute;
