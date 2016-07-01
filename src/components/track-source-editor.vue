@@ -1,12 +1,14 @@
 <template>
   <div class="track-source-editor">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="videon id tai url-osoite"
-      @input.stop="onInput | debounce 500"
-      @change.stop
-      v-model="source">
+    <div :class="{ 'form-group': true, 'has-error': hasError }">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="videon id tai url-osoite"
+        @input.stop="onInput | debounce 500"
+        @change.stop
+        v-model="source">
+    </div>
     <dropdown
       :items="suggestionTitles"
       @select="onSelectSuggestion"
@@ -24,7 +26,11 @@ export default {
   },
   props: {
     source: String,
-    suggestions: Array
+    suggestions: Array,
+    hasError: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     suggestionTitles() {

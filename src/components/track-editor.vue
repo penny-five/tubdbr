@@ -11,6 +11,7 @@
         <track-source-editor
           :source="track.source"
           :suggestions="suggestions"
+          :has-error="track.invalid"
           @change="onChangeSource">
         </track-source-editor>
       </div>

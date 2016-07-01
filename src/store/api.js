@@ -33,7 +33,12 @@ export function fetchVideoMetadata(videoID) {
       id: videoID,
       part: ['snippet', 'contentDetails']
     })).done(res => {
-      resolve(parseResponse(res));
+      const metadata = parseResponse(res);
+      if (metadata != null) {
+        resolve(metadata);
+      } else {
+        reject('Invalid video id ' + videoID);
+      }
     }).fail(reject);
   });
 }

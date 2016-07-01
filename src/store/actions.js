@@ -2,12 +2,6 @@ import { parseVideoProps } from '../utils';
 import { fetchVideoMetadata } from './api';
 import * as consts from './constants';
 
-function tryFetchMetadata(videoID, cb) {
-  if (videoID !== null) {
-    fetchVideoMetadata(videoID).then(cb);
-  }
-}
-
 export function updateTrackMetadata({ dispatch }, track, metadata) {
   dispatch(consts.MUTATION_UPDATE_TRACK_METADATA, track, metadata);
 }
@@ -20,14 +14,26 @@ export function updateTrackDelay({ dispatch }, track, delay) {
   dispatch(consts.MUTATION_UPDATE_TRACK_DELAY, track, delay);
 }
 
+export function setInvalidTrackSource({ dispatch }, track) {
+  dispatch(consts.MUTATION_SET_INVALID_TRACK_SOURCE, track);
+}
+
+export function clearInvalidTrackSource({ dispatch }, track) {
+  dispatch(consts.CLEAR_INVALID_TRACK_SOURCE, track);
+}
+
 export function fetchTrackMetadata(store, track) {
   const source = store.state.tracks[track].source;
   const { id, delay } = parseVideoProps(source);
   if (id != null) {
-    tryFetchMetadata(id, metadata => {
+    fetchVideoMetadata(id).then(metadata => {
       if (store.state.tracks[track].source === source) {
         updateTrackDelay(store, track, delay);
         updateTrackMetadata(store, track, metadata);
+      }
+    }).catch(() => {
+      if (store.state.tracks[track].source === source) {
+        setInvalidTrackSource(store, track);
       }
     });
   }

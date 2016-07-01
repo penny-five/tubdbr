@@ -16,12 +16,14 @@ const initialState = {
   suggestedAudioTracks,
   tracks: {
     audio: {
+      invalid: false,
       source: queryParams[consts.KEY_AUDIO_SOURCE] || null,
       volume: _.clamp(parseInt(queryParams[consts.KEY_AUDIO_VOLUME], 10) || consts.DEFAULT_AUDIO_TRACK_VOLUME, 0, 100),
       delay: parseInt(queryParams[consts.KEY_AUDIO_DELAY], 10),
       metadata: null
     },
     video: {
+      invalid: false,
       source: queryParams[consts.KEY_VIDEO_SOURCE] || null,
       volume: _.clamp(parseInt(queryParams[consts.KEY_VIDEO_VOLUME], 10) || consts.DEFAULT_VIDEO_TRACK_VOLUME, 0, 100),
       delay: parseInt(queryParams[consts.KEY_VIDEO_DELAY], 10),
@@ -41,9 +43,11 @@ const initMiddleware = {
 const mutations = {
   [consts.MUTATION_UPDATE_TRACK_SOURCE]({ tracks }, track, source) {
     tracks[track].source = source;
+    tracks[track].invalid = false;
   },
   [consts.MUTATION_UPDATE_TRACK_METADATA]({ tracks }, track, metadata) {
     tracks[track].metadata = metadata;
+    tracks[track].invalid = false;
     tracks[track].delay = _.clamp(tracks[track].delay, 0, metadata.duration);
   },
   [consts.MUTATION_UPDATE_TRACK_DELAY]({ tracks }, track, delay) {
@@ -53,12 +57,19 @@ const mutations = {
     tracks[track].volume = volume;
   },
   [consts.MUTATION_CLEAR_TRACK]({ tracks }, track) {
+    tracks[track].invalid = false;
     tracks[track].source = null;
     tracks[track].metadata = null;
     tracks[track].delay = 0;
   },
   [consts.MUTATION_TOGGLE_SHOW_SHARING](state) {
     state.showSharing = !state.showSharing;
+  },
+  [consts.MUTATION_SET_INVALID_TRACK_SOURCE]({ tracks }, track) {
+    tracks[track].invalid = true;
+  },
+  [consts.MUTATION_CLEAR_INVALID_TRACK_SOURCE]({ tracks }, track) {
+    tracks[track].invalid = false;
   }
 };
 /* eslint-enable no-param-reassign */
