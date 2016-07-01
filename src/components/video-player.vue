@@ -18,9 +18,17 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import plyr from 'plyr';
 
 import playerHtml from '../assets/player_controls.html';
+
+const noopPlayer = {
+  seek: _.noop(),
+  play: _.noop(),
+  pause: _.noop(),
+  setVolume: _.noop()
+};
 
 export default {
   props: {
@@ -75,14 +83,16 @@ export default {
   },
   methods: {
     getAudioPlayer() {
-      return this.$els.audio.children[0].plyr;
+      return this.$els.audio.children[0].plyr || noopPlayer;
     },
     getVideoPlayer() {
-      return this.$els.video.children[0].plyr;
+      return this.$els.video.children[0].plyr || noopPlayer;
     },
     restartPlayback() {
       this.getVideoPlayer().seek(this.videoTrack.delay);
+      this.getVideoPlayer().setVolume(this.videoTrack.volume / 10);
       this.getAudioPlayer().seek(this.audioTrack.delay);
+      this.getAudioPlayer().setVolume(this.audioTrack.volume / 10);
       this.getVideoPlayer().play();
       this.getAudioPlayer().play();
     },
