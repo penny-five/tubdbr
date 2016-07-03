@@ -24,7 +24,7 @@ const parseSource = input => input || null;
 
 const parseVolume = (input, defaultVolume) => {
   const volume = parseInt(input, 10);
-  return _.clamp(volume != null ? volume : defaultVolume, 0, 100);
+  return _.clamp(!isNaN(volume) ? volume : defaultVolume, 0, 100);
 };
 
 const parseDelay = input => parseInt(input, 10);
