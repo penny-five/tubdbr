@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import 'moment-duration-format';
 import URL from 'url-parse';
 import Duration from 'duration-js';
@@ -13,10 +14,13 @@ const YT_VIDEO_ID = /^[\w\d-]{5,12}$/;
 
 const isYouTubeVideoID = input => YT_VIDEO_ID.test(input);
 
-const isYouTubeURL = url => YT_HOSTNAME_VARIANTS.indexOf(url.hostname) > -1;
+const isYouTubeURL = url => YT_HOSTNAME_VARIANTS.includes(url.hostname);
 
 function parseVideoIdFromURL(url) {
-  const id = url.query.v;
+  let id = url.query.v;
+  if (id == null) {
+    id = url.query.v || _.chain(url).split('/').last().value();
+  }
   return isYouTubeVideoID(id) ? id : null;
 }
 
