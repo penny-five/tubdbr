@@ -9,7 +9,7 @@ import mutations from './mutations';
 
 
 const initialState = Object.assign(fromURL(window.location), {
-  showSharing: false,
+  showShareDialog: false,
   suggestedAudioTracks
 });
 

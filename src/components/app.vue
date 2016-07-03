@@ -9,7 +9,7 @@
               <video-player
                 :audio-track="audioTrack"
                 :video-track="videoTrack"
-                @share="toggleShowSharing">
+                @share="toggleShowShareDialog">
               </video-player>
             </div>
             <div v-else transition="fade-slow">
@@ -18,7 +18,12 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" v-if="isShareMode">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-link center-block" @click="toggleShareMode">Näytä asetukset</button>
+        </div>
+      </div>
+      <div class="row" v-else transition="fade-slow">
         <div class="col-md-6">
           <h2>Video</h2>
           <track-editor
@@ -42,7 +47,7 @@
         </div>
       </div>
     </div>
-    <share-dialog v-if="showSharing" :url="url" @close="toggleShowSharing"></share-dialog>
+    <share-dialog v-if="showShareDialog" :url="url" @close="toggleShowShareDialog"></share-dialog>
   </div>
 </template>
 
@@ -71,7 +76,8 @@ export default {
     getters: {
       audioTrack: ({ tracks }) => tracks.audio,
       videoTrack: ({ tracks }) => tracks.video,
-      showSharing: state => state.showSharing,
+      showShareDialog: state => state.showShareDialog,
+      isShareMode: state => state.shareMode,
       suggestedAudioTracks: state => state.suggestedAudioTracks,
       hasVideoAndAudioTrackMetadata: ({ tracks }) => tracks.audio.metadata && tracks.video.metadata,
       url: state => toURL(window.location, state)

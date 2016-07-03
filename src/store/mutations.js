@@ -8,7 +8,8 @@ import {
   CLEAR_INVALID_TRACK_SOURCE,
   UPDATE_TRACK_SOURCE,
   CLEAR_TRACK,
-  TOGGLE_SHOW_SHARING
+  TOGGLE_SHOW_SHARE_DIALOG,
+  TOGGLE_SHARE_MODE
 } from '../constants/actions';
 
 
@@ -35,8 +36,11 @@ export default {
     tracks[track].metadata = null;
     tracks[track].delay = 0;
   },
-  [TOGGLE_SHOW_SHARING](state) {
-    state.showSharing = !state.showSharing;
+  [TOGGLE_SHOW_SHARE_DIALOG](state) {
+    state.showShareDialog = !state.showShareDialog;
+  },
+  [TOGGLE_SHARE_MODE](state) {
+    state.shareMode = !state.shareMode;
   },
   [SET_INVALID_TRACK_SOURCE]({ tracks }, track) {
     tracks[track].invalid = true;

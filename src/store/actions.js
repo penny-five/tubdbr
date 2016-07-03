@@ -9,7 +9,8 @@ import {
   CLEAR_INVALID_TRACK_SOURCE,
   UPDATE_TRACK_SOURCE,
   CLEAR_TRACK,
-  TOGGLE_SHOW_SHARING
+  TOGGLE_SHOW_SHARE_DIALOG,
+  TOGGLE_SHARE_MODE
 } from '../constants/actions';
 
 
@@ -61,6 +62,10 @@ export function clearTrack({ dispatch }, track) {
   dispatch(CLEAR_TRACK, track);
 }
 
-export function toggleShowSharing({ dispatch }) {
-  dispatch(TOGGLE_SHOW_SHARING);
+export function toggleShowShareDialog({ dispatch }) {
+  dispatch(TOGGLE_SHOW_SHARE_DIALOG);
+}
+
+export function toggleShareMode({ dispatch }) {
+  dispatch(TOGGLE_SHARE_MODE);
 }
