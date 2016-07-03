@@ -43,7 +43,8 @@ export default {
   },
   data: () => ({
     isVideoPlayerReady: false,
-    isAudioPlayerReady: false
+    isAudioPlayerReady: false,
+    ended: false
   }),
   computed: {
     videoTrackId() {
@@ -108,10 +109,20 @@ export default {
       this.getAudioPlayer().pause();
     },
     onVideoPlayerResumed() {
+      if (this.restartOnNextResume) {
+        this.getVideoPlayer().seek(this.videoTrack.delay);
+        this.getAudioPlayer().seek(this.audioTrack.delay);
+        this.restartOnNextResume = false;
+      }
+      if (this.ended) {
+        this.restartOnNextResume = true;
+        this.ended = false;
+      }
       this.getAudioPlayer().play();
     },
     onVideoPlayerEnded() {
       this.getAudioPlayer().pause();
+      this.ended = true;
     },
     onAudioPlayerEnded() {
       this.getAudioPlayer().seek(this.audioTrack.delay);
