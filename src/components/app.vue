@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>tbdbr</h1>
+    <h1>tubdbr</h1>
     <div class="container">
       <div class="row">
         <div class="col-md-12">

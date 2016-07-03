@@ -12,7 +12,7 @@ const providePluginOpts = {
 };
 
 const htmlPluginOpts = {
-  title: 'tbdbr',
+  title: 'tubdbr',
   template: 'src/assets/index.ejs',
   hash: false
 };

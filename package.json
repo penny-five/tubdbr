@@ -1,5 +1,5 @@
 {
-  "name": "tbdbr",
+  "name": "tubdbr",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/penny-five/tbdbr.git"
+    "url": "git+https://github.com/penny-five/tubdbr.git"
   },
   "author": "penny-five",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/penny-five/tbdbr/issues"
+    "url": "https://github.com/penny-five/tubdbr/issues"
   },
-  "homepage": "https://github.com/penny-five/tbdbr#readme",
+  "homepage": "https://github.com/penny-five/tubdbr#readme",
   "dependencies": {
     "bootstrap-sass": "3.3.6",
     "bootstrap-slider": "7.1.0",
