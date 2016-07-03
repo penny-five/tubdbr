@@ -17,6 +17,15 @@ import {
 } from '../constants/queryparams';
 
 
+const parseSource = input => input || null;
+
+const parseVolume = (input, defaultVolume) => {
+  const volume = parseInt(input, 10);
+  return _.clamp(volume != null ? volume : defaultVolume, 0, 100);
+};
+
+const parseDelay = input => parseInt(input, 10);
+
 export function fromURL(url) {
   const queryParams = qs.parse(url.search);
 
@@ -24,16 +33,16 @@ export function fromURL(url) {
     tracks: {
       audio: {
         invalid: false,
-        source: queryParams[AUDIO_SOURCE] || null,
-        volume: _.clamp(parseInt(queryParams[AUDIO_VOLUME], 10) || DEFAULT_AUDIO_TRACK_VOLUME, 0, 100),
-        delay: parseInt(queryParams[AUDIO_DELAY], 10),
+        source: parseSource(queryParams[AUDIO_SOURCE]),
+        volume: parseVolume(queryParams[AUDIO_VOLUME], DEFAULT_AUDIO_TRACK_VOLUME),
+        delay: parseDelay(queryParams[AUDIO_DELAY]),
         metadata: null
       },
       video: {
         invalid: false,
-        source: queryParams[VIDEO_SOURCE] || null,
-        volume: _.clamp(parseInt(queryParams[VIDEO_VOLUME], 10) || DEFAULT_VIDEO_TRACK_VOLUME, 0, 100),
-        delay: parseInt(queryParams[VIDEO_DELAY], 10),
+        source: parseSource(queryParams[VIDEO_SOURCE]),
+        volume: parseVolume(queryParams[VIDEO_VOLUME], DEFAULT_VIDEO_TRACK_VOLUME),
+        delay: parseDelay(queryParams[VIDEO_DELAY]),
         metadata: null
       }
     }
