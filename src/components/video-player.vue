@@ -204,7 +204,7 @@ export default {
   }
 
   .plyr__controls {
-    background: linear-gradient(transparent, transparentize(black, 0.7));
+    background: linear-gradient(transparent, transparentize(black, 0.4));
 
     button {
       margin-left: 5px;
@@ -230,7 +230,7 @@ export default {
 
       flex-direction: row-reverse;
 
-      background: linear-gradient(transparentize(black, 0.7), transparent);
+      background: linear-gradient(transparentize(black, 0.4), transparent);
     }
   }
 
