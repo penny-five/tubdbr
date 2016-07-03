@@ -1,0 +1,16 @@
+@each $name, $duration in (slow: 0.6s, normal: 0.4s, fast: 0.2s) {
+  .fade-#{$name}-transition {
+    opacity: 1;
+    transition: opacity $duration ease;
+  }
+
+  .fade-#{$name}-enter {
+    opacity: 0;
+  }
+
+  .fade-#{$name}-leave {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+  }
+}

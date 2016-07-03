@@ -1,0 +1,2 @@
+export const DEFAULT_VIDEO_TRACK_VOLUME = 80;
+export const DEFAULT_AUDIO_TRACK_VOLUME = 40;

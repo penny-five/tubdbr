@@ -6,7 +6,7 @@
 import $ from 'jquery';
 import 'bootstrap-slider';
 
-import { formatDuration } from '../utils';
+import { format } from '../utils/duration';
 
 export default {
   props: {
@@ -48,7 +48,7 @@ export default {
       min: this.min,
       max: this.max,
       value: this.value,
-      formatter: this.format === 'duration' ? formatDuration : null
+      formatter: this.format === 'duration' ? format : null
     }).on('change', event => {
       if (!this.lazy) this.value = event.target.value;
     }).on('slideStop', event => {

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import moment from 'moment';
 import URL from 'url-parse';
 
+
 const LIST_VIDEOS_RESOURCE = 'https://www.googleapis.com/youtube/v3/videos';
 
 function createRequest(resource, { part, id }) {
@@ -26,8 +27,6 @@ function parseResponse(res) {
 }
 
 export function fetchVideoMetadata(videoID) {
-  if (videoID === null) return Promise.resolve(null);
-
   return new Promise((resolve, reject) => {
     $.get(createRequest(LIST_VIDEOS_RESOURCE, {
       id: videoID,
@@ -37,7 +36,7 @@ export function fetchVideoMetadata(videoID) {
       if (metadata != null) {
         resolve(metadata);
       } else {
-        reject('Invalid video id ' + videoID);
+        reject();
       }
     }).fail(reject);
   });

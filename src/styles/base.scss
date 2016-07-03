@@ -1,8 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
 
 @import "~plyr/src/scss/plyr";
+
 @import "./bootstrap";
 @import "./variables";
+@import "./transitions";
+@import "./forms";
 
 html {
   font-size: 62.5%;
@@ -49,59 +52,4 @@ a {
 label {
   margin: 2rem 0 1rem 0;
   color: $color-text-light;
-}
-
-.form-control {
-  color: $color-text;
-  border-radius: 0;
-  border: 1px solid $color-highlight-dark;
-  background-color: $color-alt-background;
-  box-shadow: inset 0 2px 1px transparentize(black, 0.925);
-
-  transition: color .25s ease-in-out, border-color 0.25s ease-in-out;
-
-  &::placeholder {
-    color: $color-text-light;
-  }
-
-  &:focus {
-    border: 1px solid $color-primary;
-    box-shadow: inset 0 2px 1px transparentize(black, 0.925);
-  }
-
-  &[readonly] {
-    color: $color-text-light;
-    border: 1px solid $color-highlight-dark;
-    background-color: $color-alt-background;
-  }
-}
-
-.has-error  {
-  .form-control {
-    color: $color-error;
-    border: 1px solid $color-highlight-dark;
-    box-shadow: inset 0 2px 1px transparentize(black, 0.925);
-
-    &:focus {
-      border: 1px solid $color-primary;
-      box-shadow: inset 0 2px 1px transparentize(black, 0.925);
-    }
-  }
-}
-
-@each $name, $duration in (slow: 0.6s, normal: 0.4s, fast: 0.2s) {
-  .fade-#{$name}-transition {
-    opacity: 1;
-    transition: opacity $duration ease;
-  }
-
-  .fade-#{$name}-enter {
-    opacity: 0;
-  }
-
-  .fade-#{$name}-leave {
-    position: absolute;
-    width: 100%;
-    opacity: 0;
-  }
 }

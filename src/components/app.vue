@@ -51,7 +51,7 @@ import _ from 'lodash';
 
 import store from 'store/store';
 import * as actions from 'store/actions';
-import { createShareableURL } from '../utils';
+import { toURL } from '../utils/state';
 
 import VideoPlayer from 'components/video-player';
 import VideoPlaceholder from 'components/video-placeholder';
@@ -74,7 +74,7 @@ export default {
       showSharing: state => state.showSharing,
       suggestedAudioTracks: state => state.suggestedAudioTracks,
       hasVideoAndAudioTrackMetadata: ({ tracks }) => tracks.audio.metadata && tracks.video.metadata,
-      url: ({ tracks }) => createShareableURL(window.location, tracks.video, tracks.audio)
+      url: state => toURL(window.location, state)
     }
   },
   methods: {

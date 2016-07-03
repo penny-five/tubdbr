@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { createYoutubeLink } from '../utils';
+
+const createYoutubeLink = videoId => `https://www.youtube.com/watch?v=${videoId}`;
 
 export default {
   props: {
