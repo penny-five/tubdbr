@@ -3,7 +3,7 @@
     <header>
       <div class="container">
         <h1>tubdbr</h1>
-        <a class="github-icon" :href="githubURL" :title="githubURL">
+        <a class="github-icon" :href="githubURL" target="_blank" :title="githubURL">
           <i class="fa fa-github" aria-hidden="true"></i>
         </a>
       </div>

@@ -50,7 +50,7 @@ $clear-btn-width: 40px;
     height: $height;
 
     object-fit: cover;
-    border: 1px solid $color-highlight-dark;
+    border: 1px solid $color-highlight-light;
   }
 
   .track-metadata__title-wrapper {
@@ -89,7 +89,7 @@ $clear-btn-width: 40px;
     transition: color 0.2s ease-out;
 
     &:hover {
-      color: $color-highlight-light;
+      color: $color-primary;
     }
   }
 }
