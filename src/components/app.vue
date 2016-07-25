@@ -109,7 +109,10 @@ export default {
 .github-icon {
   float: right;
 
-  line-height: 40px;
+  padding-left: $baseline;
+  padding-right: $baseline;
+
+  line-height: 4*$baseline;
   font-size: 25px;
   color: $color-highlight-dark;
 
@@ -117,6 +120,10 @@ export default {
 
   &:hover {
     color: $color-primary;
+  }
+
+  @media screen and (max-width: $screen-sm-min) {
+    padding-right: 0;
   }
 }
 
