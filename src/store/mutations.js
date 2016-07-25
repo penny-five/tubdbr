@@ -22,7 +22,7 @@ export default {
   [UPDATE_TRACK_METADATA]({ tracks }, track, metadata) {
     tracks[track].metadata = metadata;
     tracks[track].invalid = false;
-    tracks[track].delay = _.clamp(tracks[track].delay, 0, metadata.duration);
+    tracks[track].delay = _.clamp(tracks[track].delay || 0, 0, metadata.duration);
   },
   [UPDATE_TRACK_DELAY]({ tracks }, track, delay) {
     tracks[track].delay = delay;
