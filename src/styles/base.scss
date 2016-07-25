@@ -22,19 +22,16 @@ body {
 }
 
 header {
-  border-bottom: 1px solid $color-highlight-light;
+  padding: 15px 0;
 
-  @media screen and (max-width: $screen-sm-min) {
-    > .container {
-      padding-left: 0;
-    }
-  }
+  border-bottom: 1px solid $color-highlight-light;
 }
 
 h1 {
   display: inline-block;
 
-  margin: 1.5*$baseline;
+  margin: 0;
+
   padding: $baseline 1.5*$baseline;
 
   font-size: $font-size-large;

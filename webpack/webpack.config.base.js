@@ -20,7 +20,8 @@ const htmlPluginOpts = {
 const definePluginOpts = {
   'process.env': {
     NODE_ENV: `"${process.env.NODE_ENV}"`,
-    YOUTUBE_API_KEY: `"${process.env.YOUTUBE_API_KEY}"`
+    YOUTUBE_API_KEY: `"${process.env.YOUTUBE_API_KEY}"`,
+    GITHUB_URL: `"${process.env.GITHUB_URL}"`
   }
 };
 

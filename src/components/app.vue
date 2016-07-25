@@ -3,6 +3,9 @@
     <header>
       <div class="container">
         <h1>tubdbr</h1>
+        <a class="github-icon" :href="githubURL" :title="githubURL">
+          <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
       </div>
     </header>
     <div class="video-container-wrapper">
@@ -79,6 +82,9 @@ export default {
     ShareDialog
   },
   store,
+  data: () => ({
+    githubURL: process.env.GITHUB_URL
+  }),
   vuex: {
     actions,
     getters: {
@@ -99,6 +105,20 @@ export default {
 
 <style lang="scss">
 @import "../styles/base";
+
+.github-icon {
+  float: right;
+
+  line-height: 40px;
+  font-size: 30px;
+  color: $color-highlight-dark;
+
+  transition: color .2s ease-in-out;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
 
 .video-container-wrapper {
   margin-bottom: 4*$baseline;
