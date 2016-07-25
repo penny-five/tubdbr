@@ -1,7 +1,8 @@
 {
   "name": "tubdbr",
   "version": "2.0.0",
-  "description": "",
+  "description": "Youtube video remixer",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --content-base dist/",
