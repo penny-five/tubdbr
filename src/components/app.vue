@@ -12,7 +12,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div style="position: relative">
+            <div style="position: relative; overflow: hidden">
               <div v-if="hasVideoAndAudioTrackMetadata" transition="fade-slow">
                 <video-player
                   :audio-track="audioTrack"
