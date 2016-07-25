@@ -110,7 +110,7 @@ export default {
   float: right;
 
   line-height: 40px;
-  font-size: 30px;
+  font-size: 25px;
   color: $color-highlight-dark;
 
   transition: color .2s ease-in-out;
