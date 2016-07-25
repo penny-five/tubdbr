@@ -7,7 +7,7 @@
       </a>
     </div>
     <button class="track-metadata__clear-btn" @click="onClearClick">
-      <span class="glyphicon glyphicon-remove"></span>
+      <i class="fa fa-remove" aria-hidden="true"></i>
     </button>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
 
 $height: $control-height;
 $thumbnail-width: $height * (16/9);
-$clear-btn-width: $settings-row-control-width;
+$clear-btn-width: 40px;
 
 .track-metadata {
   display: block;

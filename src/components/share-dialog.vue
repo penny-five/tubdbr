@@ -11,7 +11,7 @@
       <div class="modal-body">
         <input-field format="text" :value="url" :readonly="true"></input-field>
         <button class="share-dialog__button" :data-clipboard-text="url" v-el:share-button>
-          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+          <i class="fa fa-clipboard" aria-hidden="true"></i>
           {{ isCopied ? 'Kopioitu!' : 'Kopioi leikepöydälle' }}
         </button>
       </div>

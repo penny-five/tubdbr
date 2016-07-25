@@ -24,10 +24,10 @@ import plyr from 'plyr';
 import playerHtml from '../assets/player_controls.html';
 
 const noopPlayer = {
-  seek: _.noop(),
-  play: _.noop(),
-  pause: _.noop(),
-  setVolume: _.noop()
+  seek: _.noop,
+  play: _.noop,
+  pause: _.noop,
+  setVolume: _.noop
 };
 
 export default {
@@ -226,7 +226,7 @@ export default {
 
   .plyr__share {
     margin-right: 5px;
-    font-size: $font-size-small;
+    font-size: $font-size-medium;
   }
 
   .plyr__tooltip {
