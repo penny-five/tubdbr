@@ -1,34 +1,36 @@
+$baseline: 10px;
+
 $font-family-sans-serif: "Lato", sans-serif;
+
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 $font-weight-ultrabold: 900;
-$font-size-tiny: 1.2rem;
+
+$font-size-tiny: 1.1rem;
+$font-size-xsmall: 1.2rem;
 $font-size-small: 1.4rem;
 $font-size-medium: 1.6rem;
 $font-size-large: 1.8rem;
+$font-size-xxlarge: 3.8rem;
 
+$color-player-background: #f9f9f9;
 
-$color-background: #304254;
-$color-alt-background: #2d3a48;
-
-$color-primary: #fc8465;
-$color-complimentary: #48b476;
+$color-primary: #28bf8d;
+$color-primary-dark: darken($color-primary, 10%);
 
 $color-error: #ce2f2f;
 
-$color-highlight-dark: #1c2733;
-$color-highlight-light: #8a97a5;
+$color-highlight-dark: #9e9e9e;
+$color-highlight-light: #dedede;
 
-$color-text: #c7c7c7;
-$color-text-light: #6c7b8b;
+$color-text-dark: #616161;
+$color-text-light: #a2a2a2;
 
 $control-height: 34px;
 $settings-row-control-width: 65px;
 
-$base-margin: 10px;
-
 $tooltip-padding: 4px 8px;
-$tooltip-font-size: $font-size-tiny;
+$tooltip-font-size: $font-size-xsmall;
 $tooltip-font-weight: $font-weight-bold;
 $tooltip-background: $color-primary;
 $tooltip-arrow-size: 5px;

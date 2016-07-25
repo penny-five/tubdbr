@@ -62,19 +62,21 @@ export default {
 .share-dialog {
 
   .modal-content {
-    background-color: $color-background;
-    border: 1px solid $color-highlight-dark;
+    background-color: white;
+    border: none;
+    border-radius: 0;
+    box-shadow: none
   }
 
   .modal-header {
     padding: 10px 15px;
 
-    border-bottom: 1px solid $color-highlight-dark;
+    border-bottom: 1px solid $color-highlight-light;
 
     > h3 {
       margin: 0;
       text-align: center;
-      color: $color-text;
+      color: $color-text-dark;
       font-size: $font-size-small;
     }
 
@@ -86,7 +88,7 @@ export default {
       transition: color 0.2s ease-out;
 
       &:hover {
-        color: $color-highlight-light;
+        color: $color-primary;
       }
       &:focus {
         outline: none;
@@ -106,20 +108,17 @@ export default {
     white-space: nowrap;
 
     color: white;
-    border: 1px solid $color-highlight-dark;
-    background-color: $color-complimentary;
-    box-shadow: 0 1px 2px transparentize(black, 0.8);
+    border: 1px solid $color-primary-dark;
+    border-radius: 0;
+    background-color: $color-primary;
 
     transition: background-color .2s ease-in-out, width 1s ease-in-out;
 
-    &:hover {
-      background-color: darken($color-complimentary, 8%);
-    }
     &:focus {
       outline: none;
     }
     &:active {
-      box-shadow: inset 0 1px 2px transparentize(black, 0.6);
+      box-shadow: inset 0px 1px 0px 1px transparentize(black, 0.9);
     }
 
     > .glyphicon {

@@ -23,6 +23,10 @@ export default {
       twoWay: true,
       default: 0
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     format: {
       type: String,
       default: 'number'
@@ -33,6 +37,9 @@ export default {
     }
   },
   watch: {
+    disabled(disabled) {
+      $(this.$el).slider(disabled ? 'disable': 'enable');
+    },
     min(min) {
       $(this.$el).slider('setAttribute', 'min', min);
     },
@@ -48,6 +55,7 @@ export default {
       min: this.min,
       max: this.max,
       value: this.value,
+      enabled: !this.disabled,
       formatter: this.format === 'duration' ? format : null
     }).on('change', event => {
       if (!this.lazy) this.value = event.target.value;
@@ -62,7 +70,7 @@ export default {
 @import "../styles/variables";
 
 $slider-handle-radius: 13px;
-$slider-track-height: 3px;
+$slider-track-height: 1px;
 $slider-border-size: 1px;
 
 .slider {
@@ -72,28 +80,28 @@ $slider-border-size: 1px;
     width: 100%;
 
     .slider-handle {
-      width: $slider-handle-radius*2;
-      height: $slider-handle-radius*2;
-      margin-top: $slider-handle-radius*-1 + $slider-track-height*.5 - $slider-border-size;
+      width: 2*$slider-handle-radius;
+      height: 2*$slider-handle-radius;
+      margin-top: -1*$slider-handle-radius + .5*$slider-track-height - $slider-border-size;
       margin-left: $slider-handle-radius*-1;
       background: white;
-      border: $slider-border-size solid $color-highlight-dark;
+      border: $slider-border-size solid $color-primary;
 
-      box-shadow: 0 2px 3px transparentize(black, 0.75);
+      box-shadow: none;
 
       &:focus {
-        border: $slider-border-size*2 solid $color-primary;
+        border: 2*$slider-border-size solid $color-primary;
         outline: none;
       }
     }
     .slider-track {
       height: $slider-track-height;
-      background: $color-highlight-dark;
+      background: $color-highlight-light;
       border-radius: 0;
       box-shadow: none;
     }
     .slider-selection {
-      background: $color-highlight-light;
+      background: $color-primary;
       border-radius: 0;
       box-shadow: none;
     }
@@ -109,7 +117,7 @@ $slider-border-size: 1px;
       font-weight: $tooltip-font-weight;
       font-size: $tooltip-font-size;
 
-      transform: scale(0.8) translateY(50%);
+      transform: scale(0.8) translateY(25%);
       transform-origin: 50% 100%;
       transition: $tooltip-transition;
 
@@ -119,11 +127,27 @@ $slider-border-size: 1px;
       }
 
       > .tooltip-inner {
+        min-width: 35px;
         background-color: $color-primary;
-        box-shadow: 0 2px 3px transparentize(black, 0.8);
+        border-radius: 0;
       }
+
       > .tooltip-arrow {
         border-top-color: $color-primary;
+      }
+    }
+
+    &.slider-disabled {
+      .slider-handle {
+        border: $slider-border-size solid $color-highlight-light;
+      }
+
+      .slider-selection {
+        background: $color-highlight-dark;
+      }
+
+      > .tooltip {
+        display: none;
       }
     }
   }

@@ -165,44 +165,8 @@ export default {
     display: none;
   }
 
-  .video-wrapper {
-    border: 1px solid $color-highlight-dark;
-  }
-
   .plyr {
     font-family: $font-family-sans-serif;
-  }
-
-  .plyr__play-large {
-    padding: 12px 42px;
-
-    background-color: $color-complimentary;
-
-    border-radius: 28px;
-    border: none;
-
-    box-shadow: 0 1px 5px transparentize(black, 0.5);
-    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
-    -webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-
-    > svg {
-      display: none;
-    }
-
-    > .plyr__play-large__text {
-      color: white;
-      font-size: $font-size-medium;
-      font-weight: $font-weight-bold;
-      text-transform: uppercase;
-    }
-
-    &:hover {
-      background-color: darken($color-complimentary, 8%);
-    }
-    &:focus {
-      outline: none;
-    }
   }
 
   .plyr__spacer {

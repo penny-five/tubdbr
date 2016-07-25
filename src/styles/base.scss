@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Molle:400i);
 
 @import "~plyr/src/scss/plyr";
 
@@ -15,27 +16,39 @@ body {
   padding-bottom: 64px;
 
   font-size: $font-size-small;
-  background-color: $color-background;
+  background-color: white;
+}
+
+header {
+  border-bottom: 1px solid $color-highlight-light;
+
+  @media screen and (max-width: $screen-sm-min) {
+    > .container {
+      padding-left: 0;
+    }
+  }
 }
 
 h1 {
-  margin-bottom: 4rem;
+  display: inline-block;
 
-  font-size: 5.5rem;
+  margin: 1.5*$baseline;
+  padding: $baseline 1.5*$baseline;
+
+  font-size: $font-size-large;
   font-weight: $font-weight-ultrabold;
-  text-align: center;
-
-  color: $color-primary;
+  background-color: $color-primary;
+  text-align: left;
+  color: white;
 }
 
 h2 {
   margin: 5rem 0 2rem;
 
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
   font-weight: $font-weight-bold;
-  text-align: center;
 
-  color: $color-text-light;
+  color: #c1c1c1;
 }
 
 a {
@@ -51,6 +64,8 @@ a {
 
 label {
   margin: 2rem 0 1rem 0;
+  font-size: $font-size-small;
+  font-weight: $font-weight-normal;
   color: $color-text-light;
 }
 

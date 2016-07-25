@@ -1,7 +1,21 @@
 <template>
   <div class="slider-widget">
-    <input-field :min="min" :max="max" :value.sync="value" :format="format" :lazy="lazy"></input-field>
-    <slider :min="min" :max="max" :value.sync="value" :format="format" :lazy="lazy"></slider>
+    <input-field
+      :min="min"
+      :max="max"
+      :value.sync="value"
+      :format="format"
+      :lazy="lazy"
+      :disabled="disabled">
+    </input-field>
+    <slider
+      :min="min"
+      :max="max"
+      :value.sync="value"
+      :format="format"
+      :lazy="lazy"
+      :disabled="disabled">
+    </slider>
   </div>
 </template>
 
@@ -17,6 +31,10 @@ export default {
     InputField
   },
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     min: {
       type: Number,
       default: 0
@@ -27,7 +45,8 @@ export default {
     },
     value: {
       type: Number,
-      default: 0
+      default: 0,
+      twoWay: false
     },
     format: {
       type: String,

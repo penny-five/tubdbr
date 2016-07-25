@@ -43,7 +43,7 @@ $clear-btn-width: $settings-row-control-width;
 .track-metadata {
   display: block;
 
-  padding-right: $clear-btn-width + $base-margin;
+  padding-right: $clear-btn-width + $baseline;
 
   .track-metadata__thumbnail {
     width: $thumbnail-width;
@@ -56,9 +56,9 @@ $clear-btn-width: $settings-row-control-width;
   .track-metadata__title-wrapper {
     position: absolute;
     top: 0;
-    right: $clear-btn-width + $base-margin;
+    right: $clear-btn-width + $baseline;
     bottom: 0;
-    left: $thumbnail-width + $base-margin;
+    left: $thumbnail-width + $baseline;
 
     white-space: nowrap;
     text-overflow: ellipsis;

@@ -1,23 +1,31 @@
 <template>
   <div>
-    <h1>tubdbr</h1>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div style="position: relative">
-            <div v-if="hasVideoAndAudioTrackMetadata" transition="fade-slow">
-              <video-player
-                :audio-track="audioTrack"
-                :video-track="videoTrack"
-                @share="toggleShowShareDialog">
-              </video-player>
-            </div>
-            <div v-else transition="fade-slow">
-              <video-placeholder></video-placeholder>
+    <header>
+      <div class="container">
+        <h1>tubdbr</h1>
+      </div>
+    </header>
+    <div class="video-container-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div style="position: relative">
+              <div v-if="hasVideoAndAudioTrackMetadata" transition="fade-slow">
+                <video-player
+                  :audio-track="audioTrack"
+                  :video-track="videoTrack"
+                  @share="toggleShowShareDialog">
+                </video-player>
+              </div>
+              <div v-else transition="fade-slow">
+                <video-placeholder></video-placeholder>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container">
       <div class="row" v-if="isShareMode">
         <div class="col-md-12">
           <button type="button" class="btn btn-link center-block" @click="toggleShareMode">Näytä asetukset</button>
@@ -25,8 +33,8 @@
       </div>
       <div class="row" v-else transition="fade-slow">
         <div class="col-md-6">
-          <h2>Video</h2>
           <track-editor
+            title="video"
             :track="videoTrack"
             @change-source="partial(updateTrackSource, 'video').apply(this, $arguments)"
             @change-volume="partial(updateTrackVolume, 'video').apply(this, $arguments)"
@@ -35,8 +43,8 @@
           </track-editor>
         </div>
         <div class="col-md-6">
-          <h2>Audio</h2>
           <track-editor
+            title="audio"
             :track="audioTrack"
             :suggestions="suggestedAudioTracks"
             @change-source="partial(updateTrackSource, 'audio').apply(this, $arguments)"
@@ -91,4 +99,18 @@ export default {
 
 <style lang="scss">
 @import "../styles/base";
+
+.video-container-wrapper {
+  margin-bottom: 4*$baseline;
+
+  background-color: $color-player-background;
+  border-bottom: 1px solid $color-highlight-light;
+
+  @media screen and (max-width: $screen-sm-min) {
+    > .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
 </style>

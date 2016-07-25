@@ -16,9 +16,6 @@
     content: " ";
     display: block;
     padding-top: (9/16) * 100%;
-
-    border: 1px solid $color-highlight-dark;
-    background: $color-alt-background;
   }
 
   .video-placeholder__wrapper {
