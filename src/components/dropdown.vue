@@ -1,11 +1,13 @@
 <template>
   <div class="dropdown">
     <span class="dropdown__handle"></span>
-    <ul class="dropdown__items">
-      <li v-for="item in items" class="dropdown__item" @click="onItemClick($index)">
-        {{ item }}
-      </li>
-    </ul>
+    <div class="dropdown__items-wrapper">
+      <ul class="dropdown__items">
+        <li v-for="item in items" class="dropdown__item" @click="onItemClick($index)">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -55,39 +57,39 @@ $arrow-size: 6px;
   }
 
   &:hover {
-    width: 2 * $width;
-
     > .dropdown__handle {
       border-top-color: $color-primary;
     }
 
-    > .dropdown__items {
+    .dropdown__items {
       pointer-events: inherit;
       opacity: 1;
       transform: scale(1) translateY(1px);
     }
   }
 
-  > .dropdown__items {
+  > .dropdown__items-wrapper {
     position: absolute;
-    top: $height;
+    padding-top: $height;
     right: 0;
     z-index: 1;
+  }
 
+  .dropdown__items {
     max-width: 250px;
     min-width: 150px;
 
     padding: 4px 12px;
 
-    pointer-events: none;
-
-    opacity: 0;
-
     list-style: none;
 
     border: 1px solid $color-highlight-light;
     background-color: white;
-    box-shadow: 0px 3px #f9f9f9;
+    box-shadow: 0px 3px transparentize($color-highlight-light, 0.8);
+
+    pointer-events: none;
+
+    opacity: 0;
 
     transform: scale(0.5);
     transform-origin: top right;
