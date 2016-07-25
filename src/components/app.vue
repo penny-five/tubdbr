@@ -103,7 +103,7 @@ export default {
 .video-container-wrapper {
   margin-bottom: 4*$baseline;
 
-  background-color: $color-player-background;
+  background-color: $color-background-light;
   border-bottom: 1px solid $color-highlight-light;
 
   @media screen and (max-width: $screen-sm-min) {

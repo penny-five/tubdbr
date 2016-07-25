@@ -76,17 +76,18 @@ $slider-border-size: 1px;
 .slider {
 
   &.slider-horizontal {
-    margin-top: 10px;
     width: 100%;
+    height: $control-height;
 
     .slider-handle {
       width: 2*$slider-handle-radius;
       height: 2*$slider-handle-radius;
-      margin-top: -1*$slider-handle-radius + .5*$slider-track-height - $slider-border-size;
-      margin-left: $slider-handle-radius*-1;
+
+      margin-top: .5*$control-height - $slider-handle-radius;
+      margin-left: 0;
+
       background: white;
       border: $slider-border-size solid $color-primary;
-
       box-shadow: none;
 
       &:focus {
@@ -94,12 +95,32 @@ $slider-border-size: 1px;
         outline: none;
       }
     }
+
     .slider-track {
+      margin-top: 0;
+
       height: $slider-track-height;
       background: $color-highlight-light;
       border-radius: 0;
       box-shadow: none;
     }
+
+    .slider-track-high {
+      &:after {
+        content: "";
+
+        position: absolute;
+        right: 0;
+
+        width: 26px;
+        height: 1px;
+
+        transform: translateX(26px);
+
+        background-color: #dedede;
+      }
+    }
+
     .slider-selection {
       background: $color-primary;
       border-radius: 0;
@@ -117,12 +138,12 @@ $slider-border-size: 1px;
       font-weight: $tooltip-font-weight;
       font-size: $tooltip-font-size;
 
-      transform: scale(0.8) translateY(25%);
+      transform: scale(0.8) translateY(25%) translateX($slider-handle-radius * (1 / 0.8));
       transform-origin: 50% 100%;
       transition: $tooltip-transition;
 
       &.in {
-        transform: scale(1);
+        transform: scale(1) translateX($slider-handle-radius);
         opacity: 1;
       }
 
@@ -139,6 +160,7 @@ $slider-border-size: 1px;
 
     &.slider-disabled {
       .slider-handle {
+        cursor: not-allowed;
         border: $slider-border-size solid $color-highlight-light;
       }
 
