@@ -61,8 +61,11 @@ $arrow-size: 6px;
       border-top-color: $color-primary;
     }
 
-    .dropdown__items {
+    .dropdown__items-wrapper {
       pointer-events: inherit;
+    }
+
+    .dropdown__items {
       opacity: 1;
       transform: scale(1) translateY(1px);
     }
@@ -70,9 +73,12 @@ $arrow-size: 6px;
 
   > .dropdown__items-wrapper {
     position: absolute;
+
     padding-top: $height;
     right: 0;
     z-index: 1;
+
+    pointer-events: none;
   }
 
   .dropdown__items {
@@ -86,8 +92,6 @@ $arrow-size: 6px;
     border: 1px solid $color-highlight-light;
     background-color: white;
     box-shadow: 0px 3px transparentize($color-highlight-light, 0.8);
-
-    pointer-events: none;
 
     opacity: 0;
 
