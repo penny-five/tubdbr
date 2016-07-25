@@ -2,7 +2,7 @@
   <div class="track-metadata">
     <img :src="metadata.thumbnail" class="track-metadata__thumbnail"></img>
     <div class="track-metadata__title-wrapper">
-      <a :href="link" target="_blank" class="track-metadata__title">
+      <a :href="link" :title="metadata.title" target="_blank" class="track-metadata__title">
         {{ metadata.title }}
       </a>
     </div>
