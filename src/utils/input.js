@@ -19,7 +19,7 @@ const isYouTubeURL = url => YT_HOSTNAME_VARIANTS.includes(url.hostname);
 function parseVideoIdFromURL(url) {
   let id = url.query.v;
   if (id == null) {
-    id = url.query.v || _.chain(url).split('/').last().value();
+    id = url.query.v || _.chain(url.pathname).split('/').last().value();
   }
   return isYouTubeVideoID(id) ? id : null;
 }
