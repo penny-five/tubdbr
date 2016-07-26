@@ -178,6 +178,27 @@ export default {
     color: $color-highlight-light;
   }
 
+  .plyr__play-large {
+    width: 100px;
+    height: 100px;
+
+    background-color: $color-primary;
+    border: none;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+    
+    &:focus {
+      outline: none;
+    }
+
+    > .fa-play {
+      font-size: 35px;
+      transform: translateX(3px);
+    }
+  }
+
   .plyr__controls {
     background: transparentize(black, 0.5);
 
