@@ -39,15 +39,15 @@ export default {
   watch: {
     disabled(disabled) {
       $(this.$el).slider(disabled ? 'disable': 'enable');
-      /* Reset value to fix bootstrap-slider not updating tooltip position
-      after disabled/enabled state is changed. */
-      $(this.$el).slider('setValue', this.value);
+      //$(this.$el).slider('relayout');
     },
     min(min) {
       $(this.$el).slider('setAttribute', 'min', min);
+      $(this.$el).slider('setValue', this.value);
     },
     max(max) {
       $(this.$el).slider('setAttribute', 'max', max);
+      $(this.$el).slider('setValue', this.value);
     },
     value(value) {
       $(this.$el).slider('setValue', value);
