@@ -87,7 +87,7 @@ $slider-border-size: 1px;
       height: 2*$slider-handle-radius;
 
       margin-top: .5*$control-height - $slider-handle-radius;
-      margin-left: 0;
+      margin-left: -$slider-handle-radius;
 
       background: white;
       border: $slider-border-size solid $color-primary;
@@ -108,6 +108,22 @@ $slider-border-size: 1px;
       box-shadow: none;
     }
 
+    .slider-track-low {
+      &:before {
+        content: "";
+
+        position: absolute;
+        left: 0;
+
+        width: $slider-handle-radius;
+        height: 1px;
+
+        transform: translateX(-$slider-handle-radius);
+
+        background-color: $color-primary;
+      }
+    }
+
     .slider-track-high {
       &:after {
         content: "";
@@ -115,12 +131,12 @@ $slider-border-size: 1px;
         position: absolute;
         right: 0;
 
-        width: 26px;
+        width: $slider-handle-radius;
         height: 1px;
 
-        transform: translateX(26px);
+        transform: translateX($slider-handle-radius);
 
-        background-color: #dedede;
+        background-color: $color-highlight-light;
       }
     }
 
@@ -141,12 +157,12 @@ $slider-border-size: 1px;
       font-weight: $tooltip-font-weight;
       font-size: $tooltip-font-size;
 
-      transform: scale(0.8) translateY(25%) translateX($slider-handle-radius * (1 / 0.8));
+      transform: scale(0.8) translateY(25%);
       transform-origin: 50% 100%;
       transition: $tooltip-transition;
 
       &.in {
-        transform: scale(1) translateX($slider-handle-radius);
+        transform: scale(1);
         opacity: 1;
       }
 

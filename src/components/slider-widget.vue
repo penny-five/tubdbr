@@ -72,7 +72,11 @@ $input-width: $settings-row-control-width;
 
 .slider-widget {
   position: relative;
-  padding-right: $input-width + 42px;
+  padding-right: $input-width + 2*16px + $baseline;
+
+  > .slider {
+    margin-left: 16px;
+  }
 
   > input {
     position: absolute;
