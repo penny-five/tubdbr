@@ -49,7 +49,7 @@
           <track-editor
             title="audio"
             :track="audioTrack"
-            :suggestions="suggestedAudioTracks"
+            :suggestions="audioTrackSuggestions"
             @change-source="partial(updateTrackSource, 'audio').apply(this, $arguments)"
             @change-volume="partial(updateTrackVolume, 'audio').apply(this, $arguments)"
             @change-delay="partial(updateTrackDelay, 'audio').apply(this, $arguments)"
@@ -92,7 +92,7 @@ export default {
       videoTrack: ({ tracks }) => tracks.video,
       showShareDialog: state => state.showShareDialog,
       isShareMode: state => state.shareMode,
-      suggestedAudioTracks: state => state.suggestedAudioTracks,
+      audioTrackSuggestions: state => state.audioTrackSuggestions,
       hasVideoAndAudioTrackMetadata: ({ tracks }) => tracks.audio.metadata && tracks.video.metadata,
       url: state => toURL(window.location, state)
     }

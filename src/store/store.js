@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-import suggestedAudioTracks from '../assets/suggested_audio_tracks.json';
+import audioTrackSuggestions from '../assets/audio_track_suggestions.json';
 import { fetchTrackMetadata } from './actions';
 import { fromURL } from '../utils/state';
 import mutations from './mutations';
@@ -10,7 +10,7 @@ import mutations from './mutations';
 
 const initialState = Object.assign(fromURL(window.location), {
   showShareDialog: false,
-  suggestedAudioTracks
+  audioTrackSuggestions
 });
 
 const initMiddleware = {
